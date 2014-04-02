@@ -1,4 +1,4 @@
-Echecs
+Chess
 ======
 
 A little two-players chess game in jquery
