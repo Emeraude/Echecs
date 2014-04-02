@@ -75,7 +75,12 @@ function display()
 
 function isEmpty(x, y)
 {
-	;
+	for (i = 0; i < pieces.length; i++)
+    {
+        if (pieces[i].pos_x == x && pieces[i].pos_y == y)
+            return (false);
+    }
+    return (true);
 }
 
 initGame();
