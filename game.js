@@ -84,14 +84,35 @@ function isEmpty(x, y)
     return (true);
 }
 
-function getPieceColor(x, y)
+function getPiece(x, y)
 {
 	for (i = 0; i < pieces.length; i++)
     {
         if (pieces[i].pos_x == x && pieces[i].pos_y == y)
-            return (pieces[i].joueur);
+            return (pieces[i]);
     }
     return (false);
+}
+
+function getPieceColor(x, y)
+{
+	return (getPiece(x, y).joueur);
+}
+
+function deletePiece(x, y)
+{
+	/* it doesn't work yet */
+
+	for (i = 0; i < pieces.length; i++)
+	{
+		if (pieces[i].pos_x == x && pieces[i].pos_y == y)
+		{
+			pieces[i].alive = false;
+			pieces.splice(i, 1);
+			return (true);
+		}
+	}
+	return (false);
 }
 
 initGame();
