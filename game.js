@@ -128,7 +128,25 @@ function getPiece(x, y)
     return (false);
 }
 
-<<<<<<< HEAD
+function getPieceColor(x, y)
+{
+    return (getPiece(x, y).joueur);
+}
+
+function deletePiece(x, y)
+{
+    for (i = 0; i < pieces.length; i++)
+    {
+        if (pieces[i].pos_x == x && pieces[i].pos_y == y)
+        {
+            pieces[i].alive = false;
+            pieces.splice(i, 1);
+            return (true);
+        }
+    }
+    return (false);
+}
+
 /*
 KONAMI CODE: WEEEEEEEEEEEEEEEEEE =D
 */
@@ -145,26 +163,7 @@ jQuery(function(){
 });
 function kExec(){
    alert("KONAMI CODE !")
-=======
-function getPieceColor(x, y)
-{
-	return (getPiece(x, y).joueur);
-}
 
-function deletePiece(x, y)
-{
-	for (i = 0; i < pieces.length; i++)
-	{
-		if (pieces[i].pos_x == x && pieces[i].pos_y == y)
-		{
-			pieces[i].alive = false;
-			pieces.splice(i, 1);
-			return (true);
-		}
-	}
-	return (false);
->>>>>>> c335542c51029df35010eac31082fbb2273f24f5
-}
 
 initGame();
 display(blanc);
