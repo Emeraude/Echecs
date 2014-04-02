@@ -1,6 +1,6 @@
 function give_x(letter)
 {
-	return (letter - 65);
+	return (letter - 17);
 }
 
 function give_y(number)
