@@ -18,8 +18,8 @@ function chain_to_coord(str)
 	if (!(str[1] >= '1' && str[1] <= '8'))
 		alert("Error : Move command must be like : '[LETTER A - H][NUMBER 1 - 8]'. ");
 
-	tab.charAt(0) = give_x(str.charAt(0));
-	tab.charAt(1) = give_y(str.charAt(1));
+	tab = give_x(str.charAt(0));
+	tab = give_y(str.charAt(1));
 
 	return (tab);
 }
@@ -38,8 +38,8 @@ function coord_to_chain(x, y)
 {
 	tab = new Array();
 	
-	tab.charAt(0) = give_letter_pos(x);
-	tab.charAt(1) = give_nbr_pos(y);
+	tab = give_letter_pos(x);
+	tab = give_nbr_pos(y);
 
 	return (tab);
 }
