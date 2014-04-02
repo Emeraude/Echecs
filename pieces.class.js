@@ -6,7 +6,7 @@ For each of the following classes :
 	alive is a boolean that tell us if the piece is alive.
 	piece is a string that contains the type of the piece (useful for the map)
 	
-	blocked method return a boolean (the piece can move or note)
+	isBlocked method return a boolean (the piece can move or note)
 	canMove method return a boolean which tell you if you can move this piece here
 	move method return a boolean (error) and try to move the piece
 */
@@ -26,7 +26,7 @@ function Pion(x, y, joueur)
 	{
 
 	};
-	this.blocked = function()
+	this.isBlocked = function()
 	{
 
 	};
