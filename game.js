@@ -4,6 +4,7 @@ pieces is an array that represents all the pieces of the game
 initPlayer() will create all the pieces for only one player
 initGame() will create all the pieces for all players
 displayCoord(color) will display the identifiers of each case (A-H;1-8)
+clearTable() will clear all the table
 display(color) will display all the pieces in the map
 isEmpty(x, y) will return a boolean that inform us if the case map[x][y] is empty or not
 getPiece(x, y) will return the piece in the case map[x][y], or false if there is no piece
@@ -74,7 +75,7 @@ function    displayCoord(color)
     }
 }
 
-function    clear_table()
+function    clearTable()
 {
     td = document.querySelectorAll("td");
     for (i = 0; i < 81; ++i)
@@ -87,7 +88,7 @@ function    clear_table()
 
 function    display(color)
 {
-    clear_table();
+    clearTable();
     displayCoord(color);
     td = document.querySelectorAll("td");
     if (color == blanc)
