@@ -139,8 +139,6 @@ function getPieceColor(x, y)
 
 function deletePiece(x, y)
 {
-	/* it doesn't work yet */
-
 	for (i = 0; i < pieces.length; i++)
 	{
 		if (pieces[i].pos_x == x && pieces[i].pos_y == y)

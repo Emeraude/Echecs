@@ -59,7 +59,9 @@ function Cavalier(x, y, joueur)
 	this.canMove = function(x, y)
 	{
 		for (var i = 0; i < pieces.length; i++) {
-			if (pieces[i].pos_x == x && pieces[i].pos_y == y)
+			if (pieces[i].joueur == this.joueur && 
+				pieces[i].pos_x == x &&
+				pieces[i].pos_y == y)
 				return false;
 		};
 		if ((this.pos_x == x + 1 && this.pos_y == y + 2) ||
@@ -106,15 +108,32 @@ function Tour(x, y, joueur)
 		{
 			if (y > this.pos_y)
 			{
-				for ()
+				for (var y_tmp = this.pos_y; y_tmp <= y; y_tmp++)
+					if (!isEmpty(x, y_tmp))
+						return false;
 			}
 			else
 			{
-
+				for (var y_tmp = this.pos_y; y_tmp >= y; y_tmp--)
+					if (!isEmpty(x, y_tmp))
+						return false;
 			}
+			return true;
 		}
 		else if (x != this.pos_x && y == this.pos_y))
 		{
+			if (x > this.pos_x)
+			{
+				for (var x_tmp = this.pos_x; x_tmp <= x; x_tmp++)
+					if (!isEmpty(x_tmp, y))
+						return false;
+			}
+			else
+			{
+				for (var x_tmp = this.pos_x; x_tmp >= x; x_tmp--)
+					if (!isEmpty(x_tmp, y))
+						return false;
+			}
 			return true;
 		}
 		return false;
@@ -149,6 +168,14 @@ function Roi(x, y, joueur)
 	{
 		if (x >= x - 1 && x <= x + 1) && (y >= y - 1 && y <= y + 1)
 			return true;
+
+		for (var i = 0; i < pieces.length; i++) {
+			if (pieces[i].joueur == this.joueur && 
+				pieces[i].pos_x == x &&
+				pieces[i].pos_y == y)
+				return false;
+		};
+	return false;
 	};
 	this.blocked = function()
 	{
