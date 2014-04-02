@@ -74,7 +74,7 @@ function    display()
 	}
 }
 
-function    isEmpty(x, y)
+function isEmpty(x, y)
 {
 	for (i = 0; i < pieces.length; i++)
     {
@@ -117,5 +117,4 @@ function deletePiece(x, y)
 
 initGame();
 displayCoord();
-return_table();
 display();
