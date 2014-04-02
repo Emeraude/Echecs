@@ -24,7 +24,15 @@ function Pion(x, y, joueur)
 
 	this.canMove = function(x, y)
 	{
-
+		if (isEmpty(x, y))
+		{
+			if ()
+			{
+				
+				return true;
+			}
+		}
+		return false;
 	};
 	this.isBlocked = function()
 	{
