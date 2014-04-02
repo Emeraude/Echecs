@@ -80,6 +80,7 @@ function    clear_table()
     for (i = 0; i < 81; ++i)
     {
         td[i].style.backgroundImage = "none";
+        td[i].style.backgroundColor = "white";
         td[i].innerHTML = "";
     }
 }
@@ -102,7 +103,7 @@ function    display(color)
     for (i = 0; i < 81; ++i)
     {
         if (i % 2 == 1 && td[i].innerHTML == '')
-            td[i].style.backgroundColor = 'rgba(0 ,0, 0, 0.7)';
+            td[i].style.backgroundColor = '#202020';
     }
 	for (i = 0; i < pieces.length; ++i)
 	{
