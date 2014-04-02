@@ -101,6 +101,7 @@ function    display(color)
     }
     for (i = 0; i < 81; ++i)
     {
+        td[i].id = td[i - i % 9].innerHTML+td[i % 9].innerHTML;
         if (i % 2 == 1 && td[i].innerHTML == '')
             td[i].style.backgroundColor = 'rgba(0 ,0, 0, 0.7)';
     }
@@ -109,7 +110,7 @@ function    display(color)
 		x = mult * pieces[i].pos_x + inc;
 		y = mult * pieces[i].pos_y + inc;
 		img = 'url(img/'+pieces[i].piece+'_'+pieces[i].joueur+'.png)';
-		tr = document.querySelectorAll("tr")[y];
+		tr = document.querySelectorAll('tr')[y];
 		tr.querySelectorAll('td')[x].style.backgroundImage=img;
 	}
 }
