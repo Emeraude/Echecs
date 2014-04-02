@@ -175,4 +175,4 @@ function deletePiece(x, y)
 }
 
 initGame();
-display(noir);
+display(blanc);
