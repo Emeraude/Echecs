@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Echecs</title>
+    <meta name="author" content="Alexandre Tea" />
+    <meta name="description" content="Jeu d'echecs" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" lang="fr" content="jeu, echec, reflexion" />
+    <meta name="Date-Creation-yyyymmdd" content="20140401" />
+    <script type="text/javascript" src="jquery-min.js"></script>
+    <script type="text/javascript" src="pieces.class.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+  </head>
+  <body>
+    <div id="wrapper">
+      <div id="section">
+	<table id="echiquier">
+	  <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+	  <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+	  <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+	  <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+	  <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+	  <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+	  <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+	  <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+	  <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+	</table>
+	<div id="inputs">
+	  <table>
+	    <tr><td><label for="depart">Départ</label></td><td><input type="text" id="depart" placeholder="Départ" /></td></tr>
+	    <tr><td><label for="arrivee">Arrivée</label></td><td><input type="text" id="arrivee" placeholder="Arrivée" /></td></tr>
+	    <tr><td colspan="2"><input type="button" id="valider" value="Valider" /></td></tr>
+	  </table>
+	</div>
+      </div>
+    </div>
+    <script type="text/javascript" src="game.js"></script>
+  </body>
+</html>
