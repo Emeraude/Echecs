@@ -3,9 +3,12 @@ pieces is an array that represents all the pieces of the game
 
 initPlayer() will create all the pieces for only one player
 initGame() will create all the pieces for all players
-display() will display all the pieces in the map
+displayCoord(color) will display the identifiers of each case (A-H;1-8)
+display(color) will display all the pieces in the map
 isEmpty(x, y) will return a boolean that inform us if the case map[x][y] is empty or not
+getPiece(x, y) will return the piece in the case map[x][y], or false if there is no piece
 getPieceColor(x, y) will return the color of the piece in the case map[x][y], or false if there is no piece
+deletePiece(x, y) will delete the piece in the case map[x][y]
 */
 
 map = [8][8];
@@ -153,4 +156,4 @@ function deletePiece(x, y)
 }
 
 initGame();
-display(noir);
+display(blanc);
