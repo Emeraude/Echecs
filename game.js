@@ -119,6 +119,8 @@ function    display(color)
 
 function isEmpty(x, y)
 {
+	if (x < 0 || x >= 8 || y < 0 || y >= 8)
+		return false;
 	for (i = 0; i < pieces.length; i++)
     {
         if (pieces[i].pos_x == x && pieces[i].pos_y == y)
@@ -129,22 +131,18 @@ function isEmpty(x, y)
 
 function isEatable(x, y, joueur)
 {
-	if (getPiece(x, y))
+	if (!isEmpty(x, y) && (piece = getPiece(x, y)) != false)
 	{
-		for (i = 0; i < pieces.length; i++)
-		{
-			if (pieces[i].pos_x == x && pieces[i].pos_y == y)
-			{
-				if (pieces[i].joueur == joueur)
-					return false;
-			}
-		}
+		if (piece.joueur != joueur)
+			return true;
 	}
-	return true;
+	return false;
 }
 
 function getPiece(x, y)
 {
+	if (x < 0 || x >= 8 || y < 0 || y >= 8)
+		return false;
 	for (i = 0; i < pieces.length; i++)
     {
         if (pieces[i].pos_x == x && pieces[i].pos_y == y)
