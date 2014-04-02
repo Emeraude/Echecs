@@ -20,7 +20,6 @@ function chain_to_coord(str)
 
 	tab[0] = give_x(str.charAt(0));
 	tab[1] = give_y(str.charAt(1));
-
 	return (tab);
 }
 
@@ -36,10 +35,7 @@ function give_nbr_pos(y)
 
 function coord_to_chain(x, y)
 {
-	tab = new Array();
-	
-	tab[0] = give_letter_pos(x);
-	tab[1] = give_nbr_pos(y);
-
-	return (tab);
+	new_chain = "";
+	new_chain = give_letter_pos(x) . give_nbr_pos(y);
+	return (new_chain);
 }
