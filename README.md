@@ -1,7 +1,7 @@
 Echecs
 ======
 
-A little two-players chess game is jquery
+A little two-players chess game in jquery
 
 Developped by
 -------------
