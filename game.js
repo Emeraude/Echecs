@@ -128,24 +128,6 @@ function getPiece(x, y)
     return (false);
 }
 
-<<<<<<< HEAD
-/*
-KONAMI CODE: WEEEEEEEEEEEEEEEEEE =D
-*/
-jQuery(function(){
-    var kKeys = [];
-    function Kpress(e){
-        kKeys.push(e.keyCode);
-        if (kKeys.toString().indexOf("38,38,40,40,37,39,37,39,66,65") >= 0) {
-            jQuery(this).unbind('keydown', Kpress);
-            kExec();
-        }
-    }
-    jQuery(document).keydown(Kpress);
-});
-function kExec(){
-   alert("KONAMI CODE !")
-=======
 function getPieceColor(x, y)
 {
 	return (getPiece(x, y).joueur);
@@ -163,8 +145,24 @@ function deletePiece(x, y)
 		}
 	}
 	return (false);
->>>>>>> c335542c51029df35010eac31082fbb2273f24f5
 }
+
+/*
+KONAMI CODE: WEEEEEEEEEEEEEEEEEE =D
+*/
+jQuery(function(){
+    var kKeys = [];
+    function Kpress(e){
+        kKeys.push(e.keyCode);
+        if (kKeys.toString().indexOf("38,38,40,40,37,39,37,39,66,65") >= 0) {
+            jQuery(this).unbind('keydown', Kpress);
+            kExec();
+        }
+    }
+    jQuery(document).keydown(Kpress);
+});
+function kExec(){
+   alert("KONAMI CODE !")
 
 initGame();
 display(blanc);
