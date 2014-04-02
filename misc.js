@@ -5,7 +5,7 @@ function give_x(letter)
 
 function give_y(number)
 {
-	return (number - 49);
+	return (number - 1);
 }
 
 function chain_to_coord(str)
