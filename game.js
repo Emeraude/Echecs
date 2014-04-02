@@ -178,4 +178,4 @@ function kExec(){
    alert("KONAMI CODE !")};
 
 initGame();
-display(noir);
+display(blanc);
