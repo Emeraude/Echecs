@@ -168,7 +168,7 @@ jQuery(function(){
     jQuery(document).keydown(Kpress);
 });
 function kExec(){
-   alert("KONAMI CODE !")
+   alert("KONAMI CODE !")};
 
 initGame();
 display(blanc);
