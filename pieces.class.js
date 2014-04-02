@@ -67,6 +67,29 @@ function Tour(x, y, joueur)
 	this.parent = Piece;
 	this.parent(x, y, joueur);
 	this.piece = 'tour';
+	this.canMove = function(x, y)
+	{
+		if ((x == this.pos_x && y != this.pos_y)
+		{
+			if (y > this.pos_y)
+			{
+				for ()
+			}
+			else
+			{
+
+			}
+		}
+		else if (x != this.pos_x && y == this.pos_y))
+		{
+			return true;
+		}
+		return false;
+	};
+	this.isBlocked = function()
+	{
+
+	};
 }
 function Dame(x, y, joueur)
 {
@@ -79,4 +102,14 @@ function Roi(x, y, joueur)
 	this.parent = Piece;
 	this.parent(x, y, joueur);
 	this.piece = 'roi';
+
+	this.canMove = function(x, y)
+	{
+		if (x >= x - 1 && x <= x + 1) && (y >= y - 1 && y <= y + 1)
+			return true;
+	};
+	this.isBlocked = function()
+	{
+
+	};
 }
