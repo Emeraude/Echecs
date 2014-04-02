@@ -102,7 +102,7 @@ function    display(color)
     for (i = 0; i < 81; ++i)
     {
         if (i % 2 == 1)
-            td[i].style.backgroundColor = '#c8c8c8';
+            td[i].style.backgroundColor = 'black';
     }
 	for (i = 0; i < pieces.length; ++i)
 	{
@@ -168,7 +168,7 @@ jQuery(function(){
     jQuery(document).keydown(Kpress);
 });
 function kExec(){
-   alert("KONAMI CODE !")
+   alert("KONAMI CODE !")};
 
 initGame();
 display(blanc);
