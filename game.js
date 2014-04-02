@@ -74,8 +74,19 @@ function    displayCoord(color)
     }
 }
 
+function    clear_table()
+{
+    td = document.querySelectorAll("td");
+    for (i = 0; i < 81; ++i)
+    {
+        td[i].style.backgroundImage = "none";
+        td[i].innerHTML = "";
+    }
+}
+
 function    display(color)
 {
+    clear_table();
     displayCoord(color);
     if (color == blanc)
     {
