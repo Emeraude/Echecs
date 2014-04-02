@@ -6,7 +6,7 @@ For each of the following classes :
 	alive is a boolean that tell us if the piece is alive.
 	piece is a string that contains the type of the piece (useful for the map)
 	
-	isBocked method return a boolean (the piece can move or note)
+	blocked method return a boolean (the piece can move or note)
 	canMove method return a boolean which tell you if you can move this piece here
 	move method return a boolean (error) and try to move the piece
 */
@@ -44,7 +44,7 @@ function Pion(x, y, joueur)
 	{
 
 	};
-	this.isBlocked = function()
+	this.blocked = function()
 	{
 
 	};
@@ -55,28 +55,130 @@ function Cavalier(x, y, joueur)
 	this.parent = Piece;
 	this.parent(x, y, joueur);
 	this.piece = 'cavalier';
+
+	this.canMove = function(x, y)
+	{
+		for (var i = 0; i < pieces.length; i++) {
+			if (pieces[i].joueur == this.joueur && 
+				pieces[i].pos_x == x &&
+				pieces[i].pos_y == y)
+				return false;
+		};
+		if ((this.pos_x == x + 1 && this.pos_y == y + 2) ||
+			(this.pos_x == x - 1 && this.pos_y == y + 2) ||
+			(this.pos_x == x + 2 && this.pos_y == y + 1) ||
+			(this.pos_x == x - 2 && this.pos_y == y + 1) ||
+			(this.pos_x == x + 2 && this.pos_y == y - 1) ||
+			(this.pos_x == x - 2 && this.pos_y == y - 1) ||
+			(this.pos_x == x + 1 && this.pos_y == y - 2) ||
+			(this.pos_x == x - 1 && this.pos_y == y - 2)) {
+			return true;
+		}
+	return false;
+	}
+	this.blocked = function()
+	{
+
+	};
 }
 function Fou(x, y, joueur)
 {
 	this.parent = Piece;
 	this.parent(x, y, joueur);
 	this.piece = 'fou';
+
+	this.canMove = function(x, y)
+	{
+
+	};
+	this.blocked = function()
+	{
+
+	};
 }
 function Tour(x, y, joueur)
 {
 	this.parent = Piece;
 	this.parent(x, y, joueur);
 	this.piece = 'tour';
+
+	this.canMove = function(x, y)
+	{
+		if (x == this.pos_x && y != this.pos_y)
+		{
+			if (y > this.pos_y)
+			{
+				for (var y_tmp = this.pos_y; y_tmp <= y; y_tmp++)
+					if (!isEmpty(x, y_tmp))
+						return false;
+			}
+			else
+			{
+				for (var y_tmp = this.pos_y; y_tmp >= y; y_tmp--)
+					if (!isEmpty(x, y_tmp))
+						return false;
+			}
+			return true;
+		}
+		else if (x != this.pos_x && y == this.pos_y)
+		{
+			if (x > this.pos_x)
+			{
+				for (var x_tmp = this.pos_x; x_tmp <= x; x_tmp++)
+					if (!isEmpty(x_tmp, y))
+						return false;
+			}
+			else
+			{
+				for (var x_tmp = this.pos_x; x_tmp >= x; x_tmp--)
+					if (!isEmpty(x_tmp, y))
+						return false;
+			}
+			return true;
+		}
+		return false;
+	};
+	this.blocked = function()
+	{
+
+	};
 }
 function Dame(x, y, joueur)
 {
 	this.parent = Piece;
 	this.parent(x, y, joueur);
 	this.piece = 'dame';
+
+	this.canMove = function(x, y)
+	{
+
+	};
+	this.blocked = function()
+	{
+
+	};
 }
 function Roi(x, y, joueur)
 {
 	this.parent = Piece;
 	this.parent(x, y, joueur);
 	this.piece = 'roi';
+
+	this.canMove = function(x, y)
+	{
+		if ((x >= x - 1 && x <= x + 1) && (y >= y - 1 && y <= y + 1))
+			return true;
+
+		for (var i = 0; i < pieces.length; i++) {
+			if (pieces[i].joueur == this.joueur && 
+				pieces[i].pos_x == x &&
+				pieces[i].pos_y == y)
+				return false;
+		};
+	return false;
+	};
+	this.blocked = function()
+	{
+
+	};
 }
