@@ -172,3 +172,4 @@ function kExec(){
 
 initGame();
 display(blanc);
+movePossibs(1,1);
