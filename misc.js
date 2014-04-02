@@ -36,6 +36,6 @@ function give_nbr_pos(y)
 
 function coord_to_chain(x, y)
 {
-	var new_chain = give_letter_pos(x) + give_nbr_pos(y);
+	var new_chain = give_letter_pos(x) + (give_nbr_pos(y) + "");
 	return (new_chain);
 }
