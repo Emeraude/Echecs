@@ -103,7 +103,11 @@ function    display(color)
     }
     for (i = 0; i < 81; ++i)
     {
-        td[i].id = td[i - i % 9].innerHTML+td[i % 9].innerHTML;
+        cmp = 1;
+        if (color == blanc)
+            td[i].id = td[i - i % 9].innerHTML+td[i % 9].innerHTML;
+        else
+            td[i].id = td[i + (8 - i % 9)].innerHTML+(i % 9 + 1);
         if (i % 2 == 1 && td[i].innerHTML == '')
             td[i].style.backgroundColor = '#202020';
     }
@@ -174,4 +178,4 @@ function kExec(){
    alert("KONAMI CODE !")};
 
 initGame();
-display(blanc);
+display(noir);
