@@ -104,7 +104,7 @@ function Tour(x, y, joueur)
 
 	this.canMove = function(x, y)
 	{
-		if ((x == this.pos_x && y != this.pos_y)
+		if (x == this.pos_x && y != this.pos_y)
 		{
 			if (y > this.pos_y)
 			{
@@ -120,7 +120,7 @@ function Tour(x, y, joueur)
 			}
 			return true;
 		}
-		else if (x != this.pos_x && y == this.pos_y))
+		else if (x != this.pos_x && y == this.pos_y)
 		{
 			if (x > this.pos_x)
 			{
@@ -166,7 +166,7 @@ function Roi(x, y, joueur)
 
 	this.canMove = function(x, y)
 	{
-		if (x >= x - 1 && x <= x + 1) && (y >= y - 1 && y <= y + 1)
+		if ((x >= x - 1 && x <= x + 1) && (y >= y - 1 && y <= y + 1))
 			return true;
 
 		for (var i = 0; i < pieces.length; i++) {
