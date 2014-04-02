@@ -101,8 +101,8 @@ function    display(color)
     }
     for (i = 0; i < 81; ++i)
     {
-        if (i % 2 == 1)
-            td[i].style.backgroundColor = 'black';
+        if (i % 2 == 1 && td[i].innerHTML == '')
+            td[i].style.backgroundColor = 'rgba(0 ,0, 0, 0.7)';
     }
 	for (i = 0; i < pieces.length; ++i)
 	{
