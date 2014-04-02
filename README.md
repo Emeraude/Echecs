@@ -10,6 +10,6 @@ Thibaut Broggi
 Leopold Gabet  
 Aurelien Girardeau  
 Alexandre Tea  
-Denise Nguyen
-Dorian Jolivald
+Denise Nguyen  
+Dorian Jolivald  
 Vincent Vielle  
