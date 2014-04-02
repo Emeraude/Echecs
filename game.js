@@ -9,9 +9,9 @@ getPieceColor(x, y) will return the color of the piece in the case map[x][y], or
 */
 
 map = [8][8];
-pieces = Array();
+pieces = new Array();
 
-function initPlayer(color)
+function    initPlayer(color)
 {
 	if (color == noir)
 	{
@@ -35,13 +35,13 @@ function initPlayer(color)
 	pieces.push(new Roi(4, x, color));
 }
 
-function initGame()
+function    initGame()
 {
 	initPlayer(blanc);
 	initPlayer(noir);
 }
 
-function displayCoord()
+function    displayCoord()
 {
 	tr = document.querySelectorAll("tr")[0];
 	for (i = 0; i < 8; ++i)
@@ -56,7 +56,7 @@ function displayCoord()
 
 }
 
-function display()
+function    display()
 {
 	for (i = 0; i < pieces.length; ++i)
 	{
@@ -74,7 +74,7 @@ function display()
 	}
 }
 
-function isEmpty(x, y)
+function    isEmpty(x, y)
 {
 	for (i = 0; i < pieces.length; i++)
     {
@@ -117,4 +117,5 @@ function deletePiece(x, y)
 
 initGame();
 displayCoord();
+return_table();
 display();
