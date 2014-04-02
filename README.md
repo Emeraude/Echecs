@@ -1,15 +1,15 @@
 Chess
 =====
 
-A little two-players chess game in jquery
+A little two-players chess game is jquery
 
-Developped by
--------------
+Developpers
+-----------
 
-Thibaut Broggi  
-Leopold Gabet  
-Aurelien Girardeau  
-Denise Nguyen  
-Dorian Jolivald  
-Alexandre Tea  
-Vincent Vielle  
+Thibaut Broggi
+Leopold Gabet
+Aurelien Girardeau
+Dorian Jolivald
+Denise Nguyen
+Alexandre Tea
+Vinvent Vielle
