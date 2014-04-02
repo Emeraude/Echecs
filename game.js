@@ -123,6 +123,8 @@ function    display(color)
 
 function isEmpty(x, y)
 {
+	if (x < 0 || x >= 8 || y < 0 || y >= 8)
+		return false;
 	for (i = 0; i < pieces.length; i++)
     {
         if (pieces[i].pos_x == x && pieces[i].pos_y == y)
@@ -131,8 +133,20 @@ function isEmpty(x, y)
     return (true);
 }
 
+function isEatable(x, y, joueur)
+{
+	if (!isEmpty(x, y) && (piece = getPiece(x, y)) != false)
+	{
+		if (piece.joueur != joueur)
+			return true;
+	}
+	return false;
+}
+
 function getPiece(x, y)
 {
+	if (x < 0 || x >= 8 || y < 0 || y >= 8)
+		return false;
 	for (i = 0; i < pieces.length; i++)
     {
         if (pieces[i].pos_x == x && pieces[i].pos_y == y)
@@ -159,23 +173,6 @@ function deletePiece(x, y)
 	}
 	return (false);
 }
-
-/*
-KONAMI CODE: WEEEEEEEEEEEEEEEEEE =D
-*/
-jQuery(function(){
-    var kKeys = [];
-    function Kpress(e){
-        kKeys.push(e.keyCode);
-        if (kKeys.toString().indexOf("38,38,40,40,37,39,37,39,66,65") >= 0) {
-            jQuery(this).unbind('keydown', Kpress);
-            kExec();
-        }
-    }
-    jQuery(document).keydown(Kpress);
-});
-function kExec(){
-   alert("KONAMI CODE !")};
 
 initGame();
 display(blanc);
