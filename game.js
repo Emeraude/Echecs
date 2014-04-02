@@ -9,7 +9,7 @@ getPieceColor(x, y) will return the color of the piece in the case map[x][y], or
 */
 
 map = [8][8];
-pieces = Array();
+pieces = new Array();
 
 function    initPlayer(color)
 {
@@ -41,40 +41,60 @@ function    initGame()
 	initPlayer(noir);
 }
 
-function    displayCoord()
+function    displayCoord(color)
 {
-	tr = document.querySelectorAll("tr")[0];
-	for (i = 0; i < 8; ++i)
-	{
-		tr.querySelectorAll('td')[i + 1].innerHTML = i + 1;
-	}
-	for (i = 0; i < 8; ++i)
-	{
-		tr = document.querySelectorAll("tr")[i + 1];
-		tr.querySelectorAll('td')[0].innerHTML = String.fromCharCode(65 + i);
-	}
-
+    if (color == blanc)
+    {
+        tr = document.querySelectorAll("tr")[0];
+        for (i = 0; i < 8; ++i)
+        {
+            tr.querySelectorAll('td')[i + 1].innerHTML = i + 1;
+        }
+        for (i = 0; i < 8; ++i)
+        {
+            tr = document.querySelectorAll("tr")[i + 1];
+            tr.querySelectorAll('td')[0].innerHTML = String.fromCharCode(65 + i);
+        }
+    }
+    else if (color == noir)
+    {
+        tr = document.querySelectorAll("tr")[8];
+        for (i = 8; i > 0; --i)
+        {
+            tr.querySelectorAll('td')[i - 1].innerHTML = 9 - i;
+        }
+        for (i = 8; i > 0; --i)
+        {
+            tr = document.querySelectorAll("tr")[i - 1];
+            tr.querySelectorAll('td')[8].innerHTML =    String.fromCharCode(73 - i);
+        }
+    }
 }
 
-function    display()
+function    display(color)
 {
+    displayCoord(color);
+    if (color == blanc)
+    {
+        inc = 1;
+        mult = 1;
+    }
+    else
+    {
+        inc = 7;
+        mult = -1;
+    }
 	for (i = 0; i < pieces.length; ++i)
 	{
-		/*
-		that's a tmp test function. it must be rewrited
-
-		pieces images are in the img directory
-		files names are : img/[piece]_[color].png
-		*/
-		x = pieces[i].pos_x + 1;
-		y = pieces[i].pos_y + 1;
+		x = mult * pieces[i].pos_x + inc;
+		y = mult * pieces[i].pos_y + inc;
 		img = 'url(img/'+pieces[i].piece+'_'+pieces[i].joueur+'.png)';
 		tr = document.querySelectorAll("tr")[y];
 		tr.querySelectorAll('td')[x].style.backgroundImage=img;
 	}
 }
 
-function    isEmpty(x, y)
+function isEmpty(x, y)
 {
 	for (i = 0; i < pieces.length; i++)
     {
@@ -84,25 +104,17 @@ function    isEmpty(x, y)
     return (true);
 }
 
-function    return_table()
-{
-    for (i = 0; i < pieces.length; i++)
-    {
-        pieces[i].pos_x = 7 - pieces[i].pos_x;
-        pieces[i].pos_y = 7 - pieces[i].pos_y;
-    }
-}    
-    
-function getPieceColor(x, y)
+function getPiece(x, y)
 {
 	for (i = 0; i < pieces.length; i++)
     {
         if (pieces[i].pos_x == x && pieces[i].pos_y == y)
-            return (pieces[i].joueur);
+            return (pieces[i]);
     }
     return (false);
 }
 
+<<<<<<< HEAD
 /*
 KONAMI CODE: WEEEEEEEEEEEEEEEEEE =D
 */
@@ -119,9 +131,28 @@ jQuery(function(){
 });
 function kExec(){
    alert("KONAMI CODE !")
+=======
+function getPieceColor(x, y)
+{
+	return (getPiece(x, y).joueur);
+}
+
+function deletePiece(x, y)
+{
+	/* it doesn't work yet */
+
+	for (i = 0; i < pieces.length; i++)
+	{
+		if (pieces[i].pos_x == x && pieces[i].pos_y == y)
+		{
+			pieces[i].alive = false;
+			pieces.splice(i, 1);
+			return (true);
+		}
+	}
+	return (false);
+>>>>>>> c335542c51029df35010eac31082fbb2273f24f5
 }
 
 initGame();
-displayCoord();
-return_table();
-display();
+display(noir);
