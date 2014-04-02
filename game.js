@@ -9,7 +9,7 @@ getPieceColor(x, y) will return the color of the piece in the case map[x][y], or
 */
 
 map = [8][8];
-pieces = Array();
+pieces = new Array();
 
 function    initPlayer(color)
 {
