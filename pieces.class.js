@@ -59,7 +59,9 @@ function Cavalier(x, y, joueur)
 	this.canMove = function(x, y)
 	{
 		for (var i = 0; i < pieces.length; i++) {
-			if (pieces[i].pos_x == x && pieces[i].pos_y == y)
+			if (pieces[i].joueur == this.joueur && 
+				pieces[i].pos_x == x &&
+				pieces[i].pos_y == y)
 				return false;
 		};
 		if ((this.pos_x == x + 1 && this.pos_y == y + 2) ||
@@ -132,7 +134,23 @@ function Roi(x, y, joueur)
 
 	this.canMove = function(x, y)
 	{
-
+		for (var i = 0; i < pieces.length; i++) {
+			if (pieces[i].joueur == this.joueur && 
+				pieces[i].pos_x == x &&
+				pieces[i].pos_y == y)
+				return false;
+		};
+		if ((this.pos_x == x + 1 && this.pos_y == y + 1) ||
+			(this.pos_x == x - 1 && this.pos_y == y + 1) ||
+			(this.pos_x == x && this.pos_y == y + 1) ||
+			(this.pos_x == x - 1 && this.pos_y == y - 1) ||
+			(this.pos_x == x + 1 && this.pos_y == y - 1) ||
+			(this.pos_x == x && this.pos_y == y - 1) ||
+			(this.pos_x == x + 1 && this.pos_y == y) ||
+			(this.pos_x == x - 1 && this.pos_y == y)) {
+			return true;
+		}
+	return false;
 	};
 	this.blocked = function()
 	{
