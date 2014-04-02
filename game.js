@@ -128,7 +128,6 @@ function getPiece(x, y)
     return (false);
 }
 
-<<<<<<< HEAD
 /*
 KONAMI CODE: WEEEEEEEEEEEEEEEEEE =D
 */
@@ -144,8 +143,8 @@ jQuery(function(){
     jQuery(document).keydown(Kpress);
 });
 function kExec(){
-   alert("KONAMI CODE !")
-=======
+   alert("KONAMI CODE !");}
+
 function getPieceColor(x, y)
 {
 	return (getPiece(x, y).joueur);
@@ -163,7 +162,6 @@ function deletePiece(x, y)
 		}
 	}
 	return (false);
->>>>>>> c335542c51029df35010eac31082fbb2273f24f5
 }
 
 initGame();
