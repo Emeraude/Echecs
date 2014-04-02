@@ -1,4 +1,4 @@
-/*
++/*
 pieces is an array that represents all the pieces of the game
 
 initPlayer() will create all the pieces for only one player
