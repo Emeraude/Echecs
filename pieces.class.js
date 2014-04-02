@@ -81,6 +81,7 @@ function Cavalier(x, y, joueur)
 
 	};
 }
+
 function Fou(x, y, joueur)
 {
 	this.parent = Piece;
@@ -96,6 +97,7 @@ function Fou(x, y, joueur)
 
 	};
 }
+
 function Tour(x, y, joueur)
 {
 	this.parent = Piece;
@@ -143,6 +145,7 @@ function Tour(x, y, joueur)
 
 	};
 }
+
 function Dame(x, y, joueur)
 {
 	this.parent = Piece;
@@ -158,6 +161,7 @@ function Dame(x, y, joueur)
 
 	};
 }
+
 function Roi(x, y, joueur)
 {
 	this.parent = Piece;
