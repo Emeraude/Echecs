@@ -6,30 +6,21 @@ For each of the following classes :
 	alive is a boolean that tell us if the piece is alive.
 	piece is a string that contains the type of the piece (useful for the map)
 	
-	isBlocked method return a boolean (the piece can move or note)
+	isBocked method return a boolean (the piece can move or note)
 	canMove method return a boolean which tell you if you can move this piece here
 	move method return a boolean (error) and try to move the piece
 */
 
 var blanc = 'blanc';
 var noir = 'noir';
-function Pion(x, y, joueur)
+
+function Piece(x, y, joueur)
 {
 	this.joueur = joueur;
-	this.piece = 'pion';
 	this.pos_x = x;
 	this.pos_y = y;
 	this.alive = true;
-	this.played = false;
 
-	this.canMove = function(x, y)
-	{
-
-	};
-	this.isBlocked = function()
-	{
-
-	};
 	this.move = function(x, y)
 	{
 		if (this.canMove(x, y))
@@ -41,43 +32,51 @@ function Pion(x, y, joueur)
 		return false;
 	};
 }
+
+function Pion(x, y, joueur)
+{
+	this.parent = Piece;
+	this.parent(x, y, joueur);
+	this.piece = 'pion';
+	this.played = false;
+
+	this.canMove = function(x, y)
+	{
+
+	};
+	this.isBlocked = function()
+	{
+
+	};
+}
+
 function Cavalier(x, y, joueur)
 {
-	this.joueur = joueur;
+	this.parent = Piece;
+	this.parent(x, y, joueur);
 	this.piece = 'cavalier';
-	this.pos_x = x;
-	this.pos_y = y;
-	this.alive = true;
 }
 function Fou(x, y, joueur)
 {
-	this.joueur = joueur;
+	this.parent = Piece;
+	this.parent(x, y, joueur);
 	this.piece = 'fou';
-	this.pos_x = x;
-	this.pos_y = y;
-	this.alive = true;
 }
 function Tour(x, y, joueur)
 {
-	this.joueur = joueur;
+	this.parent = Piece;
+	this.parent(x, y, joueur);
 	this.piece = 'tour';
-	this.pos_x = x;
-	this.pos_y = y;
-	this.alive = true;
 }
 function Dame(x, y, joueur)
 {
-	this.joueur = joueur;
+	this.parent = Piece;
+	this.parent(x, y, joueur);
 	this.piece = 'dame';
-	this.pos_x = x;
-	this.pos_y = y;
-	this.alive = true;
 }
 function Roi(x, y, joueur)
 {
-	this.joueur = joueur;
+	this.parent = Piece;
+	this.parent(x, y, joueur);
 	this.piece = 'roi';
-	this.pos_x = x;
-	this.pos_y = y;
-	this.alive = true;
 }

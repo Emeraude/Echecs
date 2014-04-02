@@ -5,6 +5,7 @@ initPlayer() will create all the pieces for only one player
 initGame() will create all the pieces for all players
 display() will display all the pieces in the map
 isEmpty(x, y) will return a boolean that inform us if the case map[x][y] is empty or not
+getPieceColor(x, y) will return the color of the piece in the case map[x][y], or false if there is no piece
 */
 
 map = [8][8];
@@ -90,6 +91,16 @@ function    return_table()
         pieces[i].pos_x = 7 - pieces[i].pos_x;
         pieces[i].pos_y = 7 - pieces[i].pos_y;
     }
+}    
+    
+function getPieceColor(x, y)
+{
+	for (i = 0; i < pieces.length; i++)
+    {
+        if (pieces[i].pos_x == x && pieces[i].pos_y == y)
+            return (pieces[i].joueur);
+    }
+    return (false);
 }
 
 initGame();
