@@ -88,6 +88,7 @@ function    display(color)
 {
     clear_table();
     displayCoord(color);
+    td = document.querySelectorAll("td");
     if (color == blanc)
     {
         inc = 1;
@@ -97,6 +98,11 @@ function    display(color)
     {
         inc = 7;
         mult = -1;
+    }
+    for (i = 0; i < 81; ++i)
+    {
+        if (i % 2 == 1)
+            td[i].style.backgroundColor = '#c8c8c8';
     }
 	for (i = 0; i < pieces.length; ++i)
 	{
@@ -118,6 +124,22 @@ function isEmpty(x, y)
     return (true);
 }
 
+function isEatable(x, y, joueur)
+{
+	if (getPiece(x, y))
+	{
+		for (i = 0; i < pieces.length; i++)
+		{
+			if (pieces[i].pos_x == x && pieces[i].pos_y == y)
+			{
+				if (pieces[i].joueur == joueur)
+					return false;
+			}
+		}
+	}
+	return true;
+}
+
 function getPiece(x, y)
 {
 	for (i = 0; i < pieces.length; i++)
@@ -127,23 +149,6 @@ function getPiece(x, y)
     }
     return (false);
 }
-
-/*
-KONAMI CODE: WEEEEEEEEEEEEEEEEEE =D
-*/
-jQuery(function(){
-    var kKeys = [];
-    function Kpress(e){
-        kKeys.push(e.keyCode);
-        if (kKeys.toString().indexOf("38,38,40,40,37,39,37,39,66,65") >= 0) {
-            jQuery(this).unbind('keydown', Kpress);
-            kExec();
-        }
-    }
-    jQuery(document).keydown(Kpress);
-});
-function kExec(){
-   alert("KONAMI CODE !");}
 
 function getPieceColor(x, y)
 {
