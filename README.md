@@ -11,3 +11,4 @@ Leopold Gabet
 Aurelien Girardeau
 Alexandre Tea
 Vincent Vielle
+Denise Nguyen
