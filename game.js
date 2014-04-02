@@ -88,6 +88,7 @@ function    display(color)
 {
     clear_table();
     displayCoord(color);
+    td = document.querySelectorAll("td");
     if (color == blanc)
     {
         inc = 1;
@@ -97,6 +98,11 @@ function    display(color)
     {
         inc = 7;
         mult = -1;
+    }
+    for (i = 0; i < 81; ++i)
+    {
+        if (i % 2 == 1)
+            td[i].style.backgroundColor = '#c8c8c8';
     }
 	for (i = 0; i < pieces.length; ++i)
 	{
