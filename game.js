@@ -4,6 +4,7 @@ pieces is an array that represents all the pieces of the game
 initPlayer() will create all the pieces for only one player
 initGame() will create all the pieces for all players
 displayCoord(color) will display the identifiers of each case (A-H;1-8)
+clearTable() will clear all the table
 display(color) will display all the pieces in the map
 isEmpty(x, y) will return a boolean that inform us if the case map[x][y] is empty or not
 getPiece(x, y) will return the piece in the case map[x][y], or false if there is no piece
@@ -74,19 +75,20 @@ function    displayCoord(color)
     }
 }
 
-function    clear_table()
+function    clearTable()
 {
     td = document.querySelectorAll("td");
     for (i = 0; i < 81; ++i)
     {
         td[i].style.backgroundImage = "none";
+        td[i].style.backgroundColor = "white";
         td[i].innerHTML = "";
     }
 }
 
 function    display(color)
 {
-    clear_table();
+    clearTable();
     displayCoord(color);
     td = document.querySelectorAll("td");
     if (color == blanc)
@@ -101,21 +103,28 @@ function    display(color)
     }
     for (i = 0; i < 81; ++i)
     {
-        if (i % 2 == 1)
-            td[i].style.backgroundColor = 'black';
+        cmp = 1;
+        if (color == blanc)
+            td[i].id = td[i - i % 9].innerHTML+td[i % 9].innerHTML;
+        else
+            td[i].id = td[i + (8 - i % 9)].innerHTML+(i % 9 + 1);
+        if (i % 2 == 1 && td[i].innerHTML == '')
+            td[i].style.backgroundColor = '#202020';
     }
 	for (i = 0; i < pieces.length; ++i)
 	{
 		x = mult * pieces[i].pos_x + inc;
 		y = mult * pieces[i].pos_y + inc;
 		img = 'url(img/'+pieces[i].piece+'_'+pieces[i].joueur+'.png)';
-		tr = document.querySelectorAll("tr")[y];
+		tr = document.querySelectorAll('tr')[y];
 		tr.querySelectorAll('td')[x].style.backgroundImage=img;
 	}
 }
 
 function isEmpty(x, y)
 {
+	if (x < 0 || x >= 8 || y < 0 || y >= 8)
+		return false;
 	for (i = 0; i < pieces.length; i++)
     {
         if (pieces[i].pos_x == x && pieces[i].pos_y == y)
@@ -124,8 +133,20 @@ function isEmpty(x, y)
     return (true);
 }
 
+function isEatable(x, y, joueur)
+{
+	if (!isEmpty(x, y) && (piece = getPiece(x, y)) != false)
+	{
+		if (piece.joueur != joueur)
+			return true;
+	}
+	return false;
+}
+
 function getPiece(x, y)
 {
+	if (x < 0 || x >= 8 || y < 0 || y >= 8)
+		return false;
 	for (i = 0; i < pieces.length; i++)
     {
         if (pieces[i].pos_x == x && pieces[i].pos_y == y)
@@ -153,23 +174,5 @@ function deletePiece(x, y)
 	return (false);
 }
 
-/*
-KONAMI CODE: WEEEEEEEEEEEEEEEEEE =D
-*/
-jQuery(function(){
-    var kKeys = [];
-    function Kpress(e){
-        kKeys.push(e.keyCode);
-        if (kKeys.toString().indexOf("38,38,40,40,37,39,37,39,66,65") >= 0) {
-            jQuery(this).unbind('keydown', Kpress);
-            kExec();
-        }
-    }
-    jQuery(document).keydown(Kpress);
-});
-function kExec(){
-   alert("KONAMI CODE !")};
-
 initGame();
 display(blanc);
-movePossibs(1,1);

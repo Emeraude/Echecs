@@ -42,7 +42,10 @@ function Pion(x, y, joueur)
 
 	this.canMove = function(x, y)
 	{
+		if (this.played == false)
+		{
 
+		}
 	};
 	this.blocked = function()
 	{
@@ -81,6 +84,7 @@ function Cavalier(x, y, joueur)
 
 	};
 }
+
 function Fou(x, y, joueur)
 {
 	this.parent = Piece;
@@ -96,6 +100,7 @@ function Fou(x, y, joueur)
 
 	};
 }
+
 function Tour(x, y, joueur)
 {
 	this.parent = Piece;
@@ -108,13 +113,13 @@ function Tour(x, y, joueur)
 		{
 			if (y > this.pos_y)
 			{
-				for (var y_tmp = this.pos_y; y_tmp <= y; y_tmp++)
+				for (var y_tmp = this.pos_y; y_tmp < y; y_tmp++)
 					if (!isEmpty(x, y_tmp))
 						return false;
 			}
 			else
 			{
-				for (var y_tmp = this.pos_y; y_tmp >= y; y_tmp--)
+				for (var y_tmp = this.pos_y; y_tmp > y; y_tmp--)
 					if (!isEmpty(x, y_tmp))
 						return false;
 			}
@@ -124,17 +129,18 @@ function Tour(x, y, joueur)
 		{
 			if (x > this.pos_x)
 			{
-				for (var x_tmp = this.pos_x; x_tmp <= x; x_tmp++)
+				for (var x_tmp = this.pos_x; x_tmp < x; x_tmp++)
 					if (!isEmpty(x_tmp, y))
 						return false;
 			}
 			else
 			{
-				for (var x_tmp = this.pos_x; x_tmp >= x; x_tmp--)
+				for (var x_tmp = this.pos_x; x_tmp > x; x_tmp--)
 					if (!isEmpty(x_tmp, y))
 						return false;
 			}
-			return true;
+			if (isEatable(x, y, joueur))
+				return true;
 		}
 		return false;
 	};
@@ -143,6 +149,7 @@ function Tour(x, y, joueur)
 
 	};
 }
+
 function Dame(x, y, joueur)
 {
 	this.parent = Piece;
@@ -158,6 +165,7 @@ function Dame(x, y, joueur)
 
 	};
 }
+
 function Roi(x, y, joueur)
 {
 	this.parent = Piece;
