@@ -1,5 +1,6 @@
 function give_x(letter)
 {
+	letter = parseInt(letter);
 	return (letter - 17);
 }
 
