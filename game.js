@@ -150,6 +150,8 @@ function isEmpty(x, y)
 
 function isEatable(x, y, joueur)
 {
+    if (x < 0 || x >= 8 || y < 0 || y >= 8)
+        return false;
 	if (!isEmpty(x, y) && (piece = getPiece(x, y)) != false)
 	{
 		if (piece.joueur != joueur)
