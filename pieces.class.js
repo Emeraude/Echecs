@@ -171,7 +171,12 @@ function Dame(x, y, joueur)
 
 	this.canMove = function(x, y)
 	{
+		tour = new Tour(this.pos_x, this.pos_y, joueur).canMove(x, y);
+		fou = new Fou(this.pos_x, this.pos_y, joueur).canMove(x, y);
 
+		if (tour || fou)
+			return true;
+		return false;
 	};
 	this.blocked = function()
 	{
