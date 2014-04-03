@@ -9,6 +9,7 @@ display(color) will display all the pieces in the map
 isEmpty(x, y) will return a boolean that inform us if the case map[x][y] is empty or not
 getPiece(x, y) will return the piece in the case map[x][y], or false if there is no piece
 getPieceColor(x, y) will return the color of the piece in the case map[x][y], or false if there is no piece
+getKing(color) will return the king informations of the specified color
 deletePiece(x, y) will delete the piece in the case map[x][y]
 */
 
@@ -177,6 +178,16 @@ function getPieceColor(x, y)
 	return (getPiece(x, y).joueur);
 }
 
+function getKing(color)
+{
+	for (i = 0; i < pieces.length; i++)
+    {
+        if (pieces[i].piece == 'roi' && pieces[i].joueur == color)
+            return (pieces[i]);
+    }
+    return (false);
+}
+
 function deletePiece(x, y)
 {
 	for (i = 0; i < pieces.length; i++)
@@ -189,6 +200,11 @@ function deletePiece(x, y)
 		}
 	}
 	return (false);
+}
+
+function isInCheck(color)
+{
+
 }
 
 tabulate_html();
