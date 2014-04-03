@@ -1,6 +1,14 @@
-var status = 0;
+/*
+** variables globales:
+**	moves:	tableau 2d des possibilites d'action de la piece selectionnee
+**		sous-tableau contient les coordonnees de la case et l'action concernee (x, y, boo)
+**		boo: true, l'action est un deplacement, false, l'action est manger un pion adverse
+**
+**	selectedPieceCoo: tableau contenant les coordonnees de la piece selectionnee (x, y)
+*/
+
 var moves = new Array();
-var coo = new Array(); // coo de la case cliquee en premier
+var selectedPieceCoo = new Array();
 
 $(document).ready(function(){
     $("#echiquier td").on({
@@ -8,7 +16,7 @@ $(document).ready(function(){
 	    if ($(this).attr("id").length == 2)
 		$(this).css("border-color", "red");
 	},
-	
+
 	mouseleave: function(){
 	    if ($(this).attr("id").length == 2)
 		$(this).css("border-color", "black");
@@ -17,61 +25,39 @@ $(document).ready(function(){
 
     $("#echiquier td").on("click", function(){
 	var id = $(this).attr("id");
+	var coo = chain_to_coord(id);
+	var moveType = 0;
 
-	if (status == 1 && my_click_is_move(id) == false)
+	if (my_is_playable_cell(id) == false)
+	    return (-1);
+	moveType = my_click_is_move(id);
+	if (isEmpty(coo[1], coo[0]) == true)
 	{
-	    status = 0;
-	    my_dft_bckgrnd_by_id(moves);
+	    var piece = getPiece(selectedPieceCoo[1], selectedPieceCoo[0]);
+
+	    my_moves_op(false);
+	    if (moveType == 1) // move
+		piece.move(coo[1], coo[0]);
+	    display(blanc); // change turn and shit
+	    moves.length = 0;
 	}
-	if (status == 0)
+	else
 	{
-	    if (id.length != 2)
-		return (0);
-	    coo = chain_to_coord(id);
-	    if (isEmpty(coo[1], coo[0]) == false)
+	    if (moveType == 2) // eat
 	    {
-		var i = 0;
-		var move_id;
-
-		moves = movePossibs(coo[1], coo[0]); //check null
-		while (i < moves.length)
-		{
-		    move_id = coord_to_chain(moves[i][0], moves[i][1]);
-		    if (moves[i][2] == true)
-			my_click(move_id, true);
-		    else
-			my_click(move_id, false);
-		    i++;
-		}
-		turnId = id;
+		alert("eat");
+		display(blanc); // change turn and shit
+		moves.length = 0;
+	    }
+	    else
+	    {
+		moves = movePossibs(coo[1], coo[0]); // have to check return value
+		selectedPieceCoo = coo;
+		my_moves_op(true);
 	    }
 	}
     });
 });
-
-function	my_click(move_id, action)
-{
-    var piece = getPiece(coo[1], coo[0]);
-    var tabCooFinal;
-    var bckgrnd;
-
-    if (action == true)
-	bckgrnd = "img/move.jpg";
-    else
-	bckgrnd = "img/eat.jpg";
-    status = 1;
-    $("#" + move_id).css("background-image", "url(" + bckgrnd + ")");
-    $("#" + move_id).on("click", function(){
-	tabCooFinal = chain_to_coord(move_id);
-	if (action == true)
-	    piece.move(tabCooFinal[1], tabCooFinal[0]);
-	else
-	    alert("eat");
-	$(this).css("background-image", "none");
-	status = 0;
-	display(blanc); ////
-    });
-}
 
 function	my_click_is_move(id)
 {
@@ -80,23 +66,42 @@ function	my_click_is_move(id)
 
     while (i < moves.length)
     {
-	if (idCoo[0] == moves[0] && idCoo[1] == moves[1])
-	    return (true);
+	if (idCoo[1] == moves[i][0] && idCoo[0] == moves[i][1])
+	{
+	    if (moves[i][2] == true)
+		return (1);
+	    else
+		return (2);
+	}
 	i++;
     }
-    return (false);
+    return (-1);
 }
 
-function	my_dft_bckgrnd_by_id(ids)
+function	my_moves_op(action)
 {
     var i = 0;
-    var idStr;
+    var id;
 
-    while (i < ids.length)
+    while (i < moves.length)
     {
-	idStr = coord_to_chain(ids[i][0], ids[i][1]);
-	$("#" + idStr).css("background-image", "none");
-//	$("#" + idStr).unbind("click"); //////
+	id = coord_to_chain(moves[i][0], moves[i][1]);
+	if (action == true)
+	{
+	    if (moves[i][2] == true)
+		$("#" + id).css("background-image", "url(img/blue.png)");
+	    else
+		$("#" + id).css("background-image", "url(img/red.png)");
+	}
+	else
+	    $("#" + id).css("background-image", "none");
 	i++;
     }
+}
+
+function	my_is_playable_cell(id)
+{
+    if (id.length == 2)
+	return (true);
+    return (false);
 }
