@@ -1,7 +1,8 @@
 function give_x(letter)
 {
-	letter = parseInt(letter);
-	return (letter - 17);
+	letter = letter.charCodeAt(letter) - 17;
+	letter = String.fromCharCode(letter);
+	return (letter);
 }
 
 function give_y(number)
@@ -12,30 +13,34 @@ function give_y(number)
 function chain_to_coord(str)
 {
 	var tab = new Array();
+	alert(str);
 	if (str.length != 2)
 		alert("Error : Move commad must be like : '[LETTER A - H][NUMBER 1 - 8]'. ");
 	if (!(str[0] >= 'A' && str[0] <= 'H'))
-		alert("Error : Move command must be like : '[LETTER A - H][NUMBER 1 - 8]'. ");
+		alert("Error : Bad letter [A - H]'");
 	if (!(str[1] >= '1' && str[1] <= '8'))
-		alert("Error : Move command must be like : '[LETTER A - H][NUMBER 1 - 8]'. ");
+		alert("Error : Bad number '[1 - 8]'");
 
 	tab[0] = give_x(str.charAt(0));
 	tab[1] = give_y(str.charAt(1));
 	return (tab);
 }
 
-function give_letter_pos(x)
+function give_letter_pos(y)
 {
-	return (x + 65);
+	y = String.fromCharCode(65 + y);
+	return (y);
 }
 
-function give_nbr_pos(y)
+function give_nbr_pos(x)
 {
-	return (y - 1);
+	return (x + 1);
 }
 
 function coord_to_chain(x, y)
 {
-	var new_chain = give_letter_pos(x) + (give_nbr_pos(y) + "");
+	x = give_nbr_pos(x);
+	y = give_letter_pos(y);
+	new_chain = x + y;
 	return (new_chain);
 }
