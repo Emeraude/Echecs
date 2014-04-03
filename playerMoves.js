@@ -51,44 +51,44 @@ function calc_roi_possibs(x, y, pion)
 	var player = getPieceColor(x, y);
 
 	if (isEmpty(x , y - 1))
-		possibs.push(x, y - 1, true);
+		possibs.push(Array(x, y - 1, true));
 	else if (isEatable(x , y - 1, player))
-		possibs.push(x , y - 1, false)
+		possibs.push(Array(x , y - 1, false))
 	
 	if (isEmpty(x , y + 1))
-		possibs.push(x , y + 1, true);
+		possibs.push(Array(x , y + 1, true));
 	else if (isEatable(x , y + 1, player))
-		possibs.push(x , y + 1, false);
+		possibs.push(Array(x , y + 1, false));
 	
 	if (isEmpty(x + 1, y))
-		possibs.push(x + 1, y, true);
+		possibs.push(Array(x + 1, y, true));
 	else if (isEatable(x + 1, y, player))
-		possibs.push(x + 1, y, false);
+		possibs.push(Array(x + 1, y, false));
 	
 	if (isEmpty(x - 1, y))
-		possibs.push(x - 1, y, true);
+		possibs.push(Array(x - 1, y, true));
 	else if (isEatable(x - 1, y, player))
-		possibs.push(x - 1, y, false);
+		possibs.push(Array(x - 1, y, false));
 	
 	if (isEmpty(x - 1, y - 1))
-		possibs.push(x - 1, y - 1, true);
+		possibs.push(Array(x - 1, y - 1, true));
 	else if (isEatable(x - 1, y - 1, player))
-		possibs.push(x - 1, y - 1, false);
+		possibs.push(Array(x - 1, y - 1, false));
 	
 	if (isEmpty(x + 1, y + 1))
-		possibs.push(x + 1, y + 1, true);
+		possibs.push(Array(x + 1, y + 1, true));
 	else if (isEatable(x + 1, y + 1, player))
-		possibs.push(x + 1, y + 1, false);
+		possibs.push(Array(x + 1, y + 1, false));
 	
 	if (isEmpty(x + 1, y - 1))
-		possibs.push(x + 1, y - 1, true);
+		possibs.push(Array(x + 1, y - 1, true));
 	else if (isEatable(x + 1, y - 1, player))
-		possibs.push(x + 1, y - 1, false);
+		possibs.push(Array(x + 1, y - 1, false));
 	
 	if (isEmpty(x - 1, y + 1))
-		possibs.push(x - 1, y + 1, true);
+		possibs.push(Array(x - 1, y + 1, true));
 	else if (isEatable(x - 1, y + 1, player))
-		possibs.push(x - 1, y + 1, false);
+		possibs.push(Array(x - 1, y + 1, false));
 } 
 function calc_dame_possibs(x, y, pion)
 {
@@ -252,25 +252,25 @@ function calc_pion_possibs(x, y, pion)
 	if (player == 'noir')
 		{
 			if (isEmpty(x, y + 1))
-				possibs.push(x, y + 1, true);
+				possibs.push(Array(x, y + 1, true));
 
 			if (isEatable(x + 1, y + 1, player))
-				possibs.push(x + 1, y + 1, false);
+				possibs.push(Array(x + 1, y + 1, false));
 
 			if (isEatable(x - 1, y + 1, player))
-				possibs.push(x - 1, y + 1, false);
+				possibs.push(Array(x - 1, y + 1, false));
 
 		}
 	else
 		{
 			if (isEmpty(x, y - 1))
-				possibs.push(x, y - 1, true);
+				possibs.push(Array(x, y - 1, true));
 
 			if (isEatable(x - 1, y - 1, player))
-				possibs.push(x - 1, y - 1, false);
+				possibs.push(Array(x - 1, y - 1, false));
 
 			if (isEatable(x + 1, y - 1, player))
-				possibs.push(x + 1, y, false);
+				possibs.push(Array(x + 1, y, false));
 		}
 	return (possibs);
 }
