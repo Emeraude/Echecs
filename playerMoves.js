@@ -51,44 +51,44 @@ function calc_roi_possibs(x, y, pion)
 	var player = getPieceColor(x, y);
 
 	if (isEmpty(x , y - 1))
-		possibs.push(x, y - 1, true);
+		possibs.push(Array(x, y - 1, true));
 	else if (isEatable(x , y - 1, player))
-		possibs.push(x , y - 1, false)
+		possibs.push(Array(x , y - 1, false))
 	
 	if (isEmpty(x , y + 1))
-		possibs.push(x , y + 1, true);
+		possibs.push(Array(x , y + 1, true));
 	else if (isEatable(x , y + 1, player))
-		possibs.push(x , y + 1, false);
+		possibs.push(Array(x , y + 1, false));
 	
 	if (isEmpty(x + 1, y))
-		possibs.push(x + 1, y, true);
+		possibs.push(Array(x + 1, y, true));
 	else if (isEatable(x + 1, y, player))
-		possibs.push(x + 1, y, false);
+		possibs.push(Array(x + 1, y, false));
 	
 	if (isEmpty(x - 1, y))
-		possibs.push(x - 1, y, true);
+		possibs.push(Array(x - 1, y, true));
 	else if (isEatable(x - 1, y, player))
-		possibs.push(x - 1, y, false);
+		possibs.push(Array(x - 1, y, false));
 	
 	if (isEmpty(x - 1, y - 1))
-		possibs.push(x - 1, y - 1, true);
+		possibs.push(Array(x - 1, y - 1, true));
 	else if (isEatable(x - 1, y - 1, player))
-		possibs.push(x - 1, y - 1, false);
+		possibs.push(Array(x - 1, y - 1, false));
 	
 	if (isEmpty(x + 1, y + 1))
-		possibs.push(x + 1, y + 1, true);
+		possibs.push(Array(x + 1, y + 1, true));
 	else if (isEatable(x + 1, y + 1, player))
-		possibs.push(x + 1, y + 1, false);
+		possibs.push(Array(x + 1, y + 1, false));
 	
 	if (isEmpty(x + 1, y - 1))
-		possibs.push(x + 1, y - 1, true);
+		possibs.push(Array(x + 1, y - 1, true));
 	else if (isEatable(x + 1, y - 1, player))
-		possibs.push(x + 1, y - 1, false);
+		possibs.push(Array(x + 1, y - 1, false));
 	
 	if (isEmpty(x - 1, y + 1))
-		possibs.push(x - 1, y + 1, true);
+		possibs.push(Array(x - 1, y + 1, true));
 	else if (isEatable(x - 1, y + 1, player))
-		possibs.push(x - 1, y + 1, false);
+		possibs.push(Array(x - 1, y + 1, false));
 } 
 function calc_dame_possibs(x, y, pion)
 {
@@ -110,11 +110,11 @@ function calc_tour_possibs(x, y, pion)
 	while (i < 8)
 	{
 		if (isEmpty(i, y))
-			possibs.push(i, y, true);
+			possibs.push(Array(i, y, true));
 		else
 		{
 			if (isEatable(i, y, player))
-				possibs.push(i, y, false);
+				possibs.push(Array(i, y, false));
 			i = 8;
 		}
 		i++;	
@@ -124,11 +124,11 @@ function calc_tour_possibs(x, y, pion)
 	while (i < 8)
 	{
 		if (isEmpty(x, i))
-			possibs.push(x, i, true);
+			possibs.push(Array(x, i, true));
 		else
 		{
 			if (isEatable(x, i, player))
-				possibs.push(x, i, false);
+				possibs.push(Array(x, i, false));
 			i = 8;
 		}
 		i++;	
@@ -144,11 +144,11 @@ function calc_fou_possibs(x, y, pion)
 	while ((x + i) < 8 && (y + i) < 8)
 	{
 		if (isEmpty(x + i, y + i))
-			possibs.push(x + i, y + i, true);
+			possibs.push(Array(x + i, y + i, true));
 		else
 		{
 			if (isEatable(x + i, y + i, player))
-				possibs.push(x + i, y + i, false);
+				possibs.push(Array(x + i, y + i, false));
 			i = 8;
 		}
 		i++;
@@ -157,11 +157,11 @@ function calc_fou_possibs(x, y, pion)
 	while ((x + i) < 8 && (y - i) >= 0)
 	{
 		if (isEmpty(x + i, y - i))
-			possibs.push(x + i, y - i, true);
+			possibs.push(Array(x + i, y - i, true));
 		else 
 		{
 			if (isEatable(x + i, y - i, player))
-				possibs.push(x + i, y - i, false);
+				possibs.push(Array(x + i, y - i, false));
 			i = 8;
 		}
 		i++;
@@ -170,11 +170,11 @@ function calc_fou_possibs(x, y, pion)
 	while ((x - i) >= 0 && (y + i) < 8)
 	{
 		if (isEmpty(x - i, y + i))
-			possibs.push(x - i, y + i, true);
+			possibs.push(Array(x - i, y + i, true));
 		else
 		{
 			if (isEatable(x - i, y + i, player))
-				possibs.push(x - i, y + i, false);
+				possibs.push(Array(x - i, y + i, false));
 			i = 8;
 		}
 		i++;
@@ -183,11 +183,11 @@ function calc_fou_possibs(x, y, pion)
 	while ((x - i) >= 0 && (y - i) >= 0)
 	{
 		if (isEmpty(x - i, y - i))
-			possibs.push(x - i, y - i, true);
+			possibs.push(Array(x - i, y - i, true));
 		else
 		{
 			if (isEatable(x - i, y - i, player))
-				possibs.push(x - i, y - i, false);
+				possibs.push(Array(x - i, y - i, false));
 			i = 8;
 		}
 		i++;
@@ -201,44 +201,44 @@ function calc_cavalier_possibs(x, y, pion)
 	var player = getPieceColor(x, y);
 
 	if (isEmpty(x + 1, y - 2))
-		possibs.push(x + 1, y - 2, true);
+		possibs.push(Array(x + 1, y - 2, true));
 	else if (isEatable(x + 1, y - 2, player))
-		possibs.push(x + 1, y - 2, false);
+		possibs.push(Array(x + 1, y - 2, false));
 
 	if (isEmpty(x + 1, y + 2))
-		possibs.push(x + 1, y + 2, true);
+		possibs.push(Array(x + 1, y + 2, true));
 	else if (isEatable(x + 1, y + 2, player))
-		possibs.push(x + 1, y + 2, false);
+		possibs.push(Array(x + 1, y + 2, false));
 
 	if (isEmpty(x - 1, y - 2))
-		possibs.push(x - 1, y - 2, true);
+		possibs.push(Array(x - 1, y - 2, true));
 	else if (isEatable(x - 1, y - 2, player))
-		possibs.push(x - 1, y - 2, false);
+		possibs.push(Array(x - 1, y - 2, false));
 
 	if (isEmpty(x - 1, y + 2))
-		possibs.push(x - 1, y + 2, true);
+		possibs.push(Array(x - 1, y + 2, true));
 	else if (isEatable(x - 1, y + 2, player))
-		possibs.push(x - 1, y + 2, false);
+		possibs.push(Array(x - 1, y + 2, false));
 
 	if (isEmpty(x + 2, y - 1))
-		possibs.push(x + 1, y - 2, true);
+		possibs.push(Array(x + 1, y - 2, true));
 	else if (isEatable(x + 1, y - 2, player))
-		possibs.push(x + 1, y - 2, false);
+		possibs.push(Array(x + 1, y - 2, false));
 
 	if (isEmpty(x + 2, y + 1))
-		possibs.push(x + 1, y + 2, true);
+		possibs.push(Array(x + 1, y + 2, true));
 	else if (isEatable(x + 1, y + 2, player))
-		possibs.push(x + 1, y + 2, false);
+		possibs.push(Array(x + 1, y + 2, false));
 
 	if (isEmpty(x - 2, y - 1))
-		possibs.push(x - 1, y - 2, true);
+		possibs.push(Array(x - 1, y - 2, true));
 	else if (isEatable(x - 1, y - 2, player))
-		possibs.push(x - 1, y - 2, false);
+		possibs.push(Array(x - 1, y - 2, false));
 
 	if (isEmpty(x - 2, y + 1))
-		possibs.push(x - 1, y + 2, true);
+		possibs.push(Array(x - 1, y + 2, true));
 	else if (isEatable(x - 1, y + 2, player))
-		possibs.push(x - 1, y + 2, false);
+		possibs.push(Array(x - 1, y + 2, false));
 
 	return possibs;
 
@@ -252,25 +252,25 @@ function calc_pion_possibs(x, y, pion)
 	if (player == 'noir')
 		{
 			if (isEmpty(x, y + 1))
-				possibs.push(x, y + 1, true);
+				possibs.push(Array(x, y + 1, true));
 
 			if (isEatable(x + 1, y + 1, player))
-				possibs.push(x + 1, y + 1, false);
+				possibs.push(Array(x + 1, y + 1, false));
 
 			if (isEatable(x - 1, y + 1, player))
-				possibs.push(x - 1, y + 1, false);
+				possibs.push(Array(x - 1, y + 1, false));
 
 		}
 	else
 		{
 			if (isEmpty(x, y - 1))
-				possibs.push(x, y - 1, true);
+				possibs.push(Array(x, y - 1, true));
 
 			if (isEatable(x - 1, y - 1, player))
-				possibs.push(x - 1, y - 1, false);
+				possibs.push(Array(x - 1, y - 1, false));
 
 			if (isEatable(x + 1, y - 1, player))
-				possibs.push(x + 1, y, false);
+				possibs.push(Array(x + 1, y, false));
 		}
 	return (possibs);
 }
