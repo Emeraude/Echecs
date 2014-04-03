@@ -204,7 +204,17 @@ function deletePiece(x, y)
 
 function isInCheck(color)
 {
+	king = getKing(color);
+	for (i = 0; i < pieces.length; i++)
+    {
+        if (pieces[i].canMove(king.pos_x, king.pos_y) && pieces[i].joueur != color)
+         {
 
+         	alert(i);
+            return (true);
+        }
+    }
+    return (false);
 }
 
 tabulate_html();
