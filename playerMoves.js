@@ -98,7 +98,7 @@ function calc_dame_possibs(x, y, pion)
 	possibs = calc_tour_possibs(x, y, pion);
 	tmp = calc_fou_possibs(x, y, pion);
 	possibs = possibs.concat(tmp);
-	return possibs
+	return possibs;
 }
 
 function calc_tour_possibs(x, y, pion)
