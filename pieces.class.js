@@ -105,7 +105,7 @@ function Fou(x, y, joueur)
 
 	this.canMove = function(x, y)
 	{
-		if (abs(this,pos_x - x) == abs(this.pos_y - y))
+		if (Math.abs(this.pos_x - x) == Math.abs(this.pos_y - y))
 			return true;
 	};
 	this.blocked = function()
