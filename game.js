@@ -202,11 +202,25 @@ function deletePiece(x, y)
 	return (false);
 }
 
-function game()
+function check_end_turn(pos_x, pos_y, elem)
 {
-    while (getKing(blanc).alive == true && getKing(noir).alive == true)
+    old_pos_x = elem.pos_x;
+    old_pos_y = elem.pos_y;
+    elem.pos_x = pos_x;
+    elem.pos_y = pos_y;
+    if (isInCheck(tour) == false)
     {
+        tour = (tour = blanc ? noir : blanc);
+        display(tour);
     }
+    else if (isInCheck(tour) == true)
+    {
+        elem.pos_x = old_pos_x;
+        elem.pos_y = old_pos_y;
+        display(tour);
+    }
+    else if (CheckAndMat(tour) == true)
+        alert("Player"+color+"wins");
 }
 
 function isInCheck(color)
@@ -216,7 +230,6 @@ function isInCheck(color)
     {
         if (pieces[i].canMove(king.pos_x, king.pos_y) && pieces[i].joueur != color)
          {
-
          	alert(i);
             return (true);
         }
