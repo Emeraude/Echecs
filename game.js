@@ -202,6 +202,13 @@ function deletePiece(x, y)
 	return (false);
 }
 
+function game()
+{
+    while (getKing(blanc).alive == true && getKing(noir).alive == true)
+    {
+    }
+}
+
 function isInCheck(color)
 {
 	king = getKing(color);

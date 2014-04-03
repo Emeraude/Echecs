@@ -187,7 +187,7 @@ function Roi(x, y, joueur)
 
 	this.canMove = function(x, y)
 	{
-		if ((x >= x - 1 && x <= x + 1) && (y >= y - 1 && y <= y + 1))
+		if ((x >= this.pos_x - 1 && x <= this.pos_x + 1) && (y >= this.pos_y - 1 && y <= this.pos_y + 1))
 			return true;
 
 		for (var i = 0; i < pieces.length; i++) {
