@@ -13,7 +13,6 @@ function give_y(number)
 function chain_to_coord(str)
 {
 	var tab = new Array();
-	alert(str);
 	if (str.length != 2)
 		alert("Error : Move commad must be like : '[LETTER A - H][NUMBER 1 - 8]'. ");
 	if (!(str[0] >= 'A' && str[0] <= 'H'))
@@ -37,13 +36,10 @@ function give_nbr_pos(x)
 	return (x + 1);
 }
 
-
-
-
 function coord_to_chain(x, y)
 {
 	x = give_nbr_pos(x);
 	y = give_letter_pos(y);
-	new_chain = x + y;
+	new_chain = y + x;
 	return (new_chain);
 }
