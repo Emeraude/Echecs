@@ -42,10 +42,22 @@ function Pion(x, y, joueur)
 
 	this.canMove = function(x, y)
 	{
-		if (this.played == false)
+		if (x == this.pos_x)
 		{
-
+			if (joueur == "noir")
+			{
+			if ((this.played == false && y <= this.pos_y + 2) ||
+				(this.played == true && y <= this.pos_y + 1))
+				return true;
+			}
+			else
+			{
+			if ((this.played == false && y >= this.pos_y - 2) ||
+				(this.played == true && y >= this.pos_y - 1))
+				return true;				
+			}
 		}
+		return false;
 	};
 	this.blocked = function()
 	{
@@ -93,11 +105,23 @@ function Fou(x, y, joueur)
 
 	this.canMove = function(x, y)
 	{
-
+		if (abs(this,pos_x - x) == abs(this.pos_y - y))
+			return true;
 	};
 	this.blocked = function()
 	{
+		var x_tmp = this.pos_x;
+		var y_tmp = this.pos_y;
 
+		while (x_tmp != x && y_tmp != y)
+		{
+			if (!isEmpty(x_tmp, y_tmp))
+				return false;
+			x_tmp < x ? x_tmp++ : x_tmp--;
+			y_tmp < y ? y_tmp++ : y_tmp--;
+		}
+		if (isEmpty(x, y) || isEatable(x, y, joueur))
+			return true;
 	};
 }
 
@@ -111,42 +135,31 @@ function Tour(x, y, joueur)
 	{
 		if (x == this.pos_x && y != this.pos_y)
 		{
-			if (y > this.pos_y)
+			var y_tmp = this.pos_y;
+			while (y_tmp != y)
 			{
-				for (var y_tmp = this.pos_y; y_tmp < y; y_tmp++)
-					if (!isEmpty(x, y_tmp))
-						return false;
-			}
-			else
-			{
-				for (var y_tmp = this.pos_y; y_tmp > y; y_tmp--)
-					if (!isEmpty(x, y_tmp))
-						return false;
+				if (!isEmpty(x, y_tmp))
+					return false;
+				y_tmp = (y_tmp < y) ? y_tmp++ : y_tmp--;
 			}
 			return true;
 		}
 		else if (x != this.pos_x && y == this.pos_y)
 		{
-			if (x > this.pos_x)
+			var x_tmp = this.pos_x;
+			while (x_tmp != x)
 			{
-				for (var x_tmp = this.pos_x; x_tmp < x; x_tmp++)
-					if (!isEmpty(x_tmp, y))
-						return false;
+				if (!isEmpty(x_tmp, y))
+					return false;
+				x_tmp = (x_tmp < x) ? x_tmp++ : x_tmp--;
 			}
-			else
-			{
-				for (var x_tmp = this.pos_x; x_tmp > x; x_tmp--)
-					if (!isEmpty(x_tmp, y))
-						return false;
-			}
-			if (isEatable(x, y, joueur))
+			if (isEmpty(x, y) || isEatable(x, y, joueur))
 				return true;
 		}
 		return false;
 	};
 	this.blocked = function()
 	{
-
 	};
 }
 
