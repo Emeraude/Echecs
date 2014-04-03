@@ -45,6 +45,21 @@ function    initGame()
 	initPlayer(noir);
 }
 
+function    tabulate_html()
+{
+    table = document.getElementById("echiquier");
+    for (i = 0; i < 9; ++i)
+    {
+        var tr = document.createElement("tr");
+        table.appendChild(tr);
+        for (j = 0; j < 9; ++j)
+        {
+            var td = document.createElement("td");
+            tr.appendChild(td);
+        }
+    }
+}
+
 function    displayCoord(color)
 {
     if (color == blanc)
@@ -174,5 +189,6 @@ function deletePiece(x, y)
 	return (false);
 }
 
+tabulate_html();
 initGame();
 display(blanc);
