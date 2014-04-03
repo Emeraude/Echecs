@@ -15,9 +15,9 @@ function movePossibs(x, y)
 	var type;
 	var possibs = new Array();
 
-	pion = getpiece(x, y);
+	pion = getPiece(x, y);
 	type = pion.piece;
-	switch type
+	switch (type)
 	{
 		case 'pion':
 			possibs = calc_pion_possibs(x, y, pion); // done
@@ -48,46 +48,46 @@ function movePossibs(x, y)
 function calc_roi_possibs(x, y, pion)
 {
 	var possibs = new Array;
-	var player = pion.joueur;
+	var player = getPieceColor(x, y);
 
 	if (isEmpty(x , y - 1))
 		possibs.push(x, y - 1, true);
-	else if (isEatable(x , y - 1, joueur))
+	else if (isEatable(x , y - 1, player))
 		possibs.push(x , y - 1, false)
 	
 	if (isEmpty(x , y + 1))
 		possibs.push(x , y + 1, true);
-	else if (isEatable(x , y + 1, joueur))
+	else if (isEatable(x , y + 1, player))
 		possibs.push(x , y + 1, false);
 	
 	if (isEmpty(x + 1, y))
 		possibs.push(x + 1, y, true);
-	else if (isEatable(x + 1, y, joueur))
+	else if (isEatable(x + 1, y, player))
 		possibs.push(x + 1, y, false);
 	
 	if (isEmpty(x - 1, y))
 		possibs.push(x - 1, y, true);
-	else if (isEatable(x - 1, y, joueur))
+	else if (isEatable(x - 1, y, player))
 		possibs.push(x - 1, y, false);
 	
 	if (isEmpty(x - 1, y - 1))
 		possibs.push(x - 1, y - 1, true);
-	else if (isEatable(x - 1, y - 1, joueur))
+	else if (isEatable(x - 1, y - 1, player))
 		possibs.push(x - 1, y - 1, false);
 	
 	if (isEmpty(x + 1, y + 1))
 		possibs.push(x + 1, y + 1, true);
-	else if (isEatable(x + 1, y + 1, joueur))
+	else if (isEatable(x + 1, y + 1, player))
 		possibs.push(x + 1, y + 1, false);
 	
 	if (isEmpty(x + 1, y - 1))
 		possibs.push(x + 1, y - 1, true);
-	else if (isEatable(x + 1, y - 1, joueur))
+	else if (isEatable(x + 1, y - 1, player))
 		possibs.push(x + 1, y - 1, false);
 	
 	if (isEmpty(x - 1, y + 1))
 		possibs.push(x - 1, y + 1, true);
-	else if (isEatable(x - 1, y + 1, joueur))
+	else if (isEatable(x - 1, y + 1, player))
 		possibs.push(x - 1, y + 1, false);
 } 
 function calc_dame_possibs(x, y, pion)
@@ -104,7 +104,7 @@ function calc_dame_possibs(x, y, pion)
 function calc_tour_possibs(x, y, pion)
 {
 	var possibs = new Array;
-	var player = pion.joueur;
+	var player = getPieceColor(x, y);
 	var i = 0;
 
 	while (i < 8)
@@ -113,7 +113,7 @@ function calc_tour_possibs(x, y, pion)
 			possibs.push(i, y, true);
 		else
 		{
-			if (isEatable(i, y, joueur))
+			if (isEatable(i, y, player))
 				possibs.push(i, y, false);
 			i = 8;
 		}
@@ -127,7 +127,7 @@ function calc_tour_possibs(x, y, pion)
 			possibs.push(x, i, true);
 		else
 		{
-			if (isEatable(x, i, joueur))
+			if (isEatable(x, i, player))
 				possibs.push(x, i, false);
 			i = 8;
 		}
@@ -139,7 +139,7 @@ function calc_tour_possibs(x, y, pion)
 function calc_fou_possibs(x, y, pion)
 {
 	var possibs = new Array;
-	var player = pion.joueur;
+	var player = getPieceColor(x, y);
 	var i = 1;
 	while ((x + i) < 8 && (y + i) < 8)
 	{
@@ -147,7 +147,7 @@ function calc_fou_possibs(x, y, pion)
 			possibs.push(x + i, y + i, true);
 		else
 		{
-			if (isEatable(x + i, y + i, joueur))
+			if (isEatable(x + i, y + i, player))
 				possibs.push(x + i, y + i, false);
 			i = 8;
 		}
@@ -160,7 +160,7 @@ function calc_fou_possibs(x, y, pion)
 			possibs.push(x + i, y - i, true);
 		else 
 		{
-			if (isEatable(x + i, y - i, joueur))
+			if (isEatable(x + i, y - i, player))
 				possibs.push(x + i, y - i, false);
 			i = 8;
 		}
@@ -173,7 +173,7 @@ function calc_fou_possibs(x, y, pion)
 			possibs.push(x - i, y + i, true);
 		else
 		{
-			if (isEatable(x - i, y + i, joueur))
+			if (isEatable(x - i, y + i, player))
 				possibs.push(x - i, y + i, false);
 			i = 8;
 		}
@@ -186,7 +186,7 @@ function calc_fou_possibs(x, y, pion)
 			possibs.push(x - i, y - i, true);
 		else
 		{
-			if (isEatable(x - i, y - i, joueur))
+			if (isEatable(x - i, y - i, player))
 				possibs.push(x - i, y - i, false);
 			i = 8;
 		}
@@ -198,46 +198,46 @@ function calc_fou_possibs(x, y, pion)
 function calc_cavalier_possibs(x, y, pion)
 {
 	var possibs = new Array;
-	var player = pion.joueur;
+	var player = getPieceColor(x, y);
 
 	if (isEmpty(x + 1, y - 2))
 		possibs.push(x + 1, y - 2, true);
-	else if (isEatable(x + 1, y - 2, joueur))
+	else if (isEatable(x + 1, y - 2, player))
 		possibs.push(x + 1, y - 2, false);
 
 	if (isEmpty(x + 1, y + 2))
 		possibs.push(x + 1, y + 2, true);
-	else if (isEatable(x + 1, y + 2, joueur))
+	else if (isEatable(x + 1, y + 2, player))
 		possibs.push(x + 1, y + 2, false);
 
 	if (isEmpty(x - 1, y - 2))
 		possibs.push(x - 1, y - 2, true);
-	else if (isEatable(x - 1, y - 2, joueur))
+	else if (isEatable(x - 1, y - 2, player))
 		possibs.push(x - 1, y - 2, false);
 
 	if (isEmpty(x - 1, y + 2))
 		possibs.push(x - 1, y + 2, true);
-	else if (isEatable(x - 1, y + 2, joueur))
+	else if (isEatable(x - 1, y + 2, player))
 		possibs.push(x - 1, y + 2, false);
 
 	if (isEmpty(x + 2, y - 1))
 		possibs.push(x + 1, y - 2, true);
-	else if (isEatable(x + 1, y - 2, joueur))
+	else if (isEatable(x + 1, y - 2, player))
 		possibs.push(x + 1, y - 2, false);
 
 	if (isEmpty(x + 2, y + 1))
 		possibs.push(x + 1, y + 2, true);
-	else if (isEatable(x + 1, y + 2, joueur))
+	else if (isEatable(x + 1, y + 2, player))
 		possibs.push(x + 1, y + 2, false);
 
 	if (isEmpty(x - 2, y - 1))
 		possibs.push(x - 1, y - 2, true);
-	else if (isEatable(x - 1, y - 2, joueur))
+	else if (isEatable(x - 1, y - 2, player))
 		possibs.push(x - 1, y - 2, false);
 
 	if (isEmpty(x - 2, y + 1))
 		possibs.push(x - 1, y + 2, true);
-	else if (isEatable(x - 1, y + 2, joueur))
+	else if (isEatable(x - 1, y + 2, player))
 		possibs.push(x - 1, y + 2, false);
 
 	return possibs;
@@ -247,8 +247,9 @@ function calc_cavalier_possibs(x, y, pion)
 function calc_pion_possibs(x, y, pion)
 {
 	var possibs = new Array;
-	var player = pion.joueur;
-	if (joueur == 'noir')
+	var player = getPieceColor(x, y);
+
+	if (player == 'noir')
 		{
 			if (isEmpty(x, y + 1))
 				possibs.push(x, y + 1, true);
