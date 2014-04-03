@@ -6,7 +6,7 @@ For each of the following classes :
 	alive is a boolean that tell us if the piece is alive.
 	piece is a string that contains the type of the piece (useful for the map)
 	
-	blocked method return a boolean (the piece can move or note)
+	isBlocked method return a boolean (the piece can move or note)
 	canMove method return a boolean which tell you if you can move this piece here
 	move method return a boolean (error) and try to move the piece
 */
@@ -31,6 +31,24 @@ function Piece(x, y, joueur)
 		}
 		return false;
 	};
+
+	this.canMove = function(x, y)
+	{
+		possibilities = movePossibs(this.pos_x, this.pos_y);
+		for (i = 0; i < possibilities.length; ++i)
+		{
+			if (possibilities[i][0] == x && possibilities[i][1] == y)
+				return true;
+		}
+		return false;
+	}
+
+	this.isBlocked = function()
+	{
+		if (movePossibs(this.pos_x, this.pos_y).length < 1)
+			return false;
+		return true;
+	}
 }
 
 function Pion(x, y, joueur)
@@ -40,7 +58,7 @@ function Pion(x, y, joueur)
 	this.piece = 'pion';
 	this.played = false;
 
-	this.canMove = function(x, y)
+	/*this.canMove = function(x, y)
 	{
 		if (x == this.pos_x)
 		{
@@ -62,7 +80,7 @@ function Pion(x, y, joueur)
 	this.blocked = function()
 	{
 
-	};
+	};*/
 }
 
 function Cavalier(x, y, joueur)
@@ -71,7 +89,7 @@ function Cavalier(x, y, joueur)
 	this.parent(x, y, joueur);
 	this.piece = 'cavalier';
 
-	this.canMove = function(x, y)
+	/*this.canMove = function(x, y)
 	{
 		for (var i = 0; i < pieces.length; i++) {
 			if (pieces[i].joueur == this.joueur && 
@@ -94,7 +112,7 @@ function Cavalier(x, y, joueur)
 	this.blocked = function()
 	{
 
-	};
+	};*/
 }
 
 function Fou(x, y, joueur)
@@ -103,26 +121,28 @@ function Fou(x, y, joueur)
 	this.parent(x, y, joueur);
 	this.piece = 'fou';
 
-	this.canMove = function(x, y)
-	{
-		if (Math.abs(this.pos_x - x) == Math.abs(this.pos_y - y))
-			return true;
-	};
-	this.blocked = function()
+	/*this.canMove = function(x, y)
 	{
 		var x_tmp = this.pos_x;
 		var y_tmp = this.pos_y;
 
-		while (x_tmp != x && y_tmp != y)
+		if (Math.abs(this.pos_x - x) == Math.abs(this.pos_y - y))
 		{
-			if (!isEmpty(x_tmp, y_tmp))
-				return false;
-			x_tmp < x ? x_tmp++ : x_tmp--;
-			y_tmp < y ? y_tmp++ : y_tmp--;
+			while (x_tmp != x && y_tmp != y)
+			{
+				if (!isEmpty(x_tmp, y_tmp))
+					return false;
+				x_tmp < x ? x_tmp++ : x_tmp--;
+				y_tmp < y ? y_tmp++ : y_tmp--;
+			}
+			if (isEmpty(x, y) || isEatable(x, y, joueur))
+				return true;
 		}
-		if (isEmpty(x, y) || isEatable(x, y, joueur))
-			return true;
+		return false;
 	};
+	this.blocked = function()
+	{
+	};*/
 }
 
 function Tour(x, y, joueur)
@@ -131,7 +151,7 @@ function Tour(x, y, joueur)
 	this.parent(x, y, joueur);
 	this.piece = 'tour';
 
-	this.canMove = function(x, y)
+	/*this.canMove = function(x, y)
 	{
 		if (x == this.pos_x && y != this.pos_y)
 		{
@@ -160,7 +180,7 @@ function Tour(x, y, joueur)
 	};
 	this.blocked = function()
 	{
-	};
+	};*/
 }
 
 function Dame(x, y, joueur)
@@ -169,7 +189,7 @@ function Dame(x, y, joueur)
 	this.parent(x, y, joueur);
 	this.piece = 'dame';
 
-	this.canMove = function(x, y)
+	/*this.canMove = function(x, y)
 	{
 		tour = new Tour(this.pos_x, this.pos_y, joueur).canMove(x, y);
 		fou = new Fou(this.pos_x, this.pos_y, joueur).canMove(x, y);
@@ -181,7 +201,7 @@ function Dame(x, y, joueur)
 	this.blocked = function()
 	{
 
-	};
+	};*/
 }
 
 function Roi(x, y, joueur)
@@ -190,7 +210,7 @@ function Roi(x, y, joueur)
 	this.parent(x, y, joueur);
 	this.piece = 'roi';
 
-	this.canMove = function(x, y)
+	/*this.canMove = function(x, y)
 	{
 		if ((x >= this.pos_x - 1 && x <= this.pos_x + 1) && (y >= this.pos_y - 1 && y <= this.pos_y + 1))
 			return true;
@@ -206,5 +226,5 @@ function Roi(x, y, joueur)
 	this.blocked = function()
 	{
 
-	};
+	};*/
 }
