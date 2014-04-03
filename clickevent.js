@@ -15,6 +15,7 @@ $(document).ready(function(){
 
     $("#echiquier td").on("click", function(){
 	var id = $(this).attr("id");
+
 	if (status == 0)
 	{
 	    if (id.length != 2)
@@ -30,28 +31,26 @@ $(document).ready(function(){
 		{
 		    move_id = coord_to_chain(moves[i][0], moves[i][1]);
 		    if (moves[i][2] == true)
-		    {
-			status = 1;
-			$("#" + move_id).css("background-color", "blue");
-			$("#" + move_id).on("click", function(){
-			    alert("move");
-			    $(this).css("background-color", "white");
-			    status = 0;
-			});
-		    }
+			my_click(move_id, true, "blue");
 		    else
-		    {
-			status = 1;
-			$("#" + move_id).css("background-color", "red");
-			$("#" + move_id).on("click", function(){
-			    alert("eat");
-			    $("#" + move_id).css("background-color", "white");
-			    status = 0;
-			});
-		    }
+			my_click(move_id, false, "red");
 		    i++;
 		}
 	    }
 	}
     });
 });
+
+function	my_click(move_id, action, color)
+{
+    status = 1;
+    $("#" + move_id).css("background-color", color);
+    $("#" + move_id).on("click", function(){
+	if (action == true)
+	    alert("move");
+	else
+	    alert("eat");
+	$(this).css("background-color", "white");
+	status = 0;
+    });
+}
