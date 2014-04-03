@@ -51,6 +51,7 @@ $(document).ready(function(){
 	    }
 	    else
 	    {
+		my_moves_op(false);
 		moves = movePossibs(coo[1], coo[0]); // have to check return value
 		selectedPieceCoo = coo;
 		my_moves_op(true);
