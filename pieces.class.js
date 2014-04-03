@@ -105,23 +105,25 @@ function Fou(x, y, joueur)
 
 	this.canMove = function(x, y)
 	{
-		if (Math.abs(this.pos_x - x) == Math.abs(this.pos_y - y))
-			return true;
-	};
-	this.blocked = function()
-	{
 		var x_tmp = this.pos_x;
 		var y_tmp = this.pos_y;
 
-		while (x_tmp != x && y_tmp != y)
+		if (Math.abs(this.pos_x - x) == Math.abs(this.pos_y - y))
 		{
-			if (!isEmpty(x_tmp, y_tmp))
-				return false;
-			x_tmp < x ? x_tmp++ : x_tmp--;
-			y_tmp < y ? y_tmp++ : y_tmp--;
+			while (x_tmp != x && y_tmp != y)
+			{
+				if (!isEmpty(x_tmp, y_tmp))
+					return false;
+				x_tmp < x ? x_tmp++ : x_tmp--;
+				y_tmp < y ? y_tmp++ : y_tmp--;
+			}
+			if (isEmpty(x, y) || isEatable(x, y, joueur))
+				return true;
 		}
-		if (isEmpty(x, y) || isEatable(x, y, joueur))
-			return true;
+		return false;
+	};
+	this.blocked = function()
+	{
 	};
 }
 
