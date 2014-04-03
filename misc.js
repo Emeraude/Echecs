@@ -37,6 +37,9 @@ function give_nbr_pos(x)
 	return (x + 1);
 }
 
+
+
+
 function coord_to_chain(x, y)
 {
 	x = give_nbr_pos(x);
