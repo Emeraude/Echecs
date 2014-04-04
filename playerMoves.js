@@ -106,7 +106,7 @@ function calc_tour_possibs(x, y, pion)
 {
 	var possibs = new Array();
 	var player = getPieceColor(x, y);
-	var i = x;
+	var i = x + 1;
 
 	while (i < 8)
 	{
@@ -120,7 +120,7 @@ function calc_tour_possibs(x, y, pion)
 		}
 		i++;
 	}
-	i = x;
+	i = x - 1;
 
 	while (i >= 0)
 	{
@@ -134,7 +134,7 @@ function calc_tour_possibs(x, y, pion)
 		}
 		i--;
 	}
-	i = y;
+	i = y + 1;
 
 	while (i < 8)
 	{
@@ -148,7 +148,7 @@ function calc_tour_possibs(x, y, pion)
 		}
 		i++;
 	}
-	i = y;
+	i = y - 1;
 	while (i >= 0)
 	{
 		if (isEmpty(x, i))
