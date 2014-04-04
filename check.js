@@ -65,3 +65,25 @@ function checkMate(color)
 	}
 	return casesAround;
 }
+
+function canWeEatThatSucker(x, y)
+{
+	var sucker = getPiece(x, y);
+	var whoCan = new Array();
+
+	for (i in pieces)
+	{
+		if (pieces[i].joueur == tour && pieces[i].alive == true)
+		{
+			tmp_x = pieces[i].pos_x;
+			tmp_y = pieces[i].pos_y;
+			possibs = movePossibs(tmp_x, tmp_y);
+			for (key in possibs)
+			{
+				if (possibs[key][0] == x && possibs[key][1] == y)
+					whoCan.push(Array(tmp_x, tmp_y));
+			}
+		}
+	}
+	return whoCan;
+}
