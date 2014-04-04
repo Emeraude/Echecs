@@ -10,13 +10,11 @@ function initCheck(color)
 {
 	pieces = [];
 
-	pieces.push(new Tour(0, 5, blanc));
-	pieces.push(new Fou(1, 1, blanc));
-	pieces.push(new Cavalier(5, 2, noir));
-	pieces.push(new Roi(5, 5, noir));
-	pieces.push(new Pion(2, 5, noir));
-
-	tour = noir;
+	pieces.push(new Tour(0, 5, noir));
+	pieces.push(new Fou(1, 1, noir));
+	pieces.push(new Cavalier(5, 2, blanc));
+	pieces.push(new Roi(5, 5, blanc));
+	pieces.push(new Pion(2, 5, blanc));
 
 	if (color == undefined)
 		display(blanc);
