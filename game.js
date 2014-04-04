@@ -15,6 +15,7 @@ deletePiece(x, y) will delete the piece in the case map[x][y]
 
 map = [8][8];
 pieces = new Array();
+tour = blanc;
 
 function    initPlayer(color)
 {
