@@ -54,13 +54,14 @@ $(document).ready(function(){
 	{
 	    if (moveType == 2) // eat
 	    {
+		var piece = getPiece(selectedPieceCoo[0], selectedPieceCoo[1]);
+
 		check_end_turn(coo[0], coo[1], piece);
 		moves.length = 0;
 	    }
 	    else
 	    {
 		my_moves_op(false);
-		console.log(coo[0] + coo[1]); ///////l
 		moves = movePossibs(coo[0], coo[1]); // have to check return value
 		selectedPieceCoo = coo;
 		my_moves_op(true);
