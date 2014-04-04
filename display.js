@@ -99,7 +99,6 @@ function    display(color)
         }
         else if (td[i].innerHTML != '')
         {
-            alert(td[i].id);
             td[i].style.backgroundColor = blanc;
             td[i].style.color = 'none';
         }
