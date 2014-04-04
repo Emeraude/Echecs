@@ -4,6 +4,7 @@ Here are the following functions used for cheking if there is a check of a check
 getKing(color) will return the king informations of the specified color
 isInCheck(color) will an array which contain all the pieces that checked the king, or false if there is no
 checkMate(color) will return a boolean that inform us if the choosen player is in checkmate (is that case, he loose the game)
+canWeEatThatSucker(x, y) will return an array which contains coordonates of pieces which can eat the piece (located in (x,y)) threating the king
 */
 
 function initCheck(color)
@@ -86,4 +87,27 @@ function canWeEatThatSucker(x, y)
 		}
 	}
 	return whoCan;
+}
+
+function kingEscape()
+{
+	king = getKing(tour);
+	x = king.pox_x;
+	y = king.pos_y;
+
+	possibs = movePossibs(king.pos_x, king.pos_y);
+	for (i in possibs)
+	{
+		king.pos_x = possibs[i][0];
+		king.pos_y = possibs[i][1];
+		if (isInCheck())
+		{
+			king.pos_x = x;
+			king.pos_y = y;
+			return true;
+		}
+	}
+	king.pos_x = x;
+	king.pos_y = y;
+	return false;
 }
