@@ -44,6 +44,8 @@ function    initGame()
 
 function isEmpty(x, y)
 {
+	if (x < 0 || x >= 8 || y < 0 || y >= 8)
+		return false;
     if (getPiece(x, y) != false)
         return false;
     return (true);
@@ -51,9 +53,11 @@ function isEmpty(x, y)
 
 function isEatable(x, y, joueur)
 {
+	if (x < 0 || x >= 8 || y < 0 || y >= 8)
+		return false;
 	if (joueur != tour)
 		return false;
-	if (!isEmpty(x, y) && (piece = getPiece(x, y)) != false)
+	if ((piece = getPiece(x, y)) != false)
 	{
 		if (piece.joueur != joueur)
 			return true;
