@@ -100,12 +100,12 @@ function	my_moves_op(action)
 	if (action == true)
 	{
 	    if (moves[i][2] == true)
-		$("#" + id).css("background-image", "url(img/blue.png)");
+		$("#" + id).css("background-color", "blue");
 	    else
-		$("#" + id).css("background-image", "url(img/red.png)");
+		$("#" + id).css("background-color", "red");
 	}
 	else
-	    $("#" + id).css("background-image", "none");
+	    $("#" + id).css("background-color", $("#" + id).css("color"));
 	i++;
     }
 }
