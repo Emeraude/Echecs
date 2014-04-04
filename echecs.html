@@ -14,6 +14,8 @@
     <script type="text/javascript" src="clickevent.js"></script>
     <script type="text/javascript" src="playerMoves.js"></script>
     <script type="text/javascript" src="check.js"></script>
+    <script type="text/javascript" src="checkmove.js"></script>
+    <script type="text/javascript" src="form.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css" />
   </head>
   <body>
@@ -25,9 +27,10 @@
 	<div id="inputs">
 	  <form method ="post" action = "#" onsubmit="return false">
 	  <table>
+	    <tr><td>Tour</td><td id="turn"></td></tr>
 	    <tr><td><label for="depart">Départ</label></td><td><input type="text" id="depart" placeholder="Départ" autofocus="autofocus"/></td></tr>
 	    <tr><td><label for="arrivee">Arrivée</label></td><td><input type="text" id="arrivee" placeholder="Arrivée" /></td></tr>
-	    <tr><td colspan="2"><input type="submit" id="valider" value="Valider" /></td></tr>
+	    <tr><td colspan="2"><input type="submit" id="valider" value="Valider" onClick="get_data_form();"/></td></tr>
 	  </table>
 	  </form>
 	</div>

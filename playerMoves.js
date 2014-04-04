@@ -14,31 +14,30 @@ function movePossibs(x, y)
 	var pion;
 	var type;
 	var possibs = new Array();
-	var player = tour;
+	var player;
 
 	pion = getPiece(x, y);
-	if (pion.joueur != tour)
-		return possibs;
+	player = pion.joueur
 	type = pion.piece;
 	switch (type)
 	{
 		case 'pion':
-			possibs = calc_pion_possibs(x, y, pion, tour); // done
+			possibs = calc_pion_possibs(x, y, pion, player); // done
 			break;
 		case 'cavalier':
-			possibs = calc_cavalier_possibs(x, y, pion, tour); // done
+			possibs = calc_cavalier_possibs(x, y, pion, player); // done
 			break;
 		case 'fou':
-			possibs = calc_fou_possibs(x, y, pion, tour); // done
+			possibs = calc_fou_possibs(x, y, pion, player); // done
 			break;
 		case 'tour':
-			possibs = calc_tour_possibs(x, y, pion, tour); // done
+			possibs = calc_tour_possibs(x, y, pion, player); // done
 			break;
 		case 'dame':
-			possibs = calc_dame_possibs(x, y, pion, tour); // done
+			possibs = calc_dame_possibs(x, y, pion, player); // done
 			break;
 		case 'roi':
-			possibs = calc_roi_possibs(x, y, pion, tour); // done
+			possibs = calc_roi_possibs(x, y, pion, player); // done
 			break;
 		default:
 			possibs = null;
@@ -51,7 +50,6 @@ function movePossibs(x, y)
 function calc_roi_possibs(x, y, pion, player)
 {
 	var possibs = new Array();
-	var player = getPieceColor(x, y);
 
 	if (isEmpty(x , y - 1))
 		possibs.push(Array(x, y - 1, true));
@@ -101,7 +99,7 @@ function calc_dame_possibs(x, y, pion, player)
 	var tmp = new Array;
 
 	possibs = calc_tour_possibs(x, y, pion, player);
-	tmp = calc_fou_possibs(x, y, pion);
+	tmp = calc_fou_possibs(x, y, pion, player);
 	possibs = possibs.concat(tmp);
 	return possibs;
 }
