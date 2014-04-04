@@ -23,7 +23,7 @@ function initCheck()
 
 function getKing(color)
 {
-	for (i = 0; i < pieces.length; i++)
+	for (var i = 0; i < pieces.length; i++)
 	{
 		if (pieces[i].piece == 'roi' && pieces[i].joueur == color)
 			return (pieces[i]);
@@ -33,9 +33,9 @@ function getKing(color)
 
 function isInCheck()
 {
-	king = getKing(tour);
-	tab = new Array();
-	for (j = 0; j < pieces.length; ++j)
+	var king = getKing(tour);
+	var tab = new Array();
+	for (var j = 0; j < pieces.length; ++j)
 	{
 		if (pieces[j].joueur != tour && pieces[j].canMove(king.pos_x, king.pos_y))
 		{
@@ -50,10 +50,10 @@ function isInCheck()
 
 function canBlockCheck(dangerousPositions, color)
 {
-	oldPieces = pieces.slice(0);
-	tab = new Array();
+	var oldPieces = pieces.slice(0);
+	var tab = new Array();
 
-	for (j = 0; j < dangerousPositions.length; ++j)
+	for (var j = 0; j < dangerousPositions.length; ++j)
 	{
 		tmpPos = dangerousPositions[j];
 		pieces = oldPieces.slice(0);
@@ -61,24 +61,18 @@ function canBlockCheck(dangerousPositions, color)
 		{
 			if (pieces[k].joueur != color || pieces[k].piece == 'roi')
 				continue ;
-			console.log(pieces[k].canMove(tmpPos[0], tmpPos[1]))
 			if (pieces[k].canMove(tmpPos[0], tmpPos[1]))
 			{
-				console.log('['+tmpPos[0]+';'+tmpPos[1]+'] '+pieces[k].piece);
-				console.log(pieces[k]);
 				old_x = pieces[k].pos_x;
 				old_y = pieces[k].pos_y;
 				pieces[k].pos_x = tmpPos[0];
 				pieces[k].pos_y = tmpPos[1];
-				console.log(pieces[k]);
-				if (isInCheck(color) == false)
+				if (isInCheck() == false)
 				{
-					tab.push(tmpPos);
-					console.log('there is a solution');
+					tab.push([tmpPos[0], tmpPos[1], pieces[k]]);
 				}
 				pieces[k].pos_x = old_x;
 				pieces[k].pos_y = old_y;
-				console.log(pieces[k]);
 			}
 		}
 	}
