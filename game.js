@@ -106,9 +106,7 @@ function check_end_turn(pos_x, pos_y, elem)
     {
         elem.pos_x = old_pos_x;
         elem.pos_y = old_pos_y;
-        deletePiece(pos_x, pos_y);
-        elem.pos_x = pos_x;
-        elem.pos_y = pos_y;
+        elem.move(pos_x, pos_y);
         tour = (tour == blanc ? noir : blanc);
         display(tour);
     }
