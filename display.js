@@ -84,7 +84,10 @@ function    display(color)
         if (color == blanc)
             td[i].id = td[i - i % 9].innerHTML+td[i % 9].innerHTML;
         else
-            td[i].id = td[i + (8 - i % 9)].innerHTML+(i % 9 + 1);
+        {
+            if (i % 9 + 1 != 9)
+                td[i].id = td[i + (8 - i % 9)].innerHTML+(i % 9 + 1);
+        }
         if (i % 2 == 1 && td[i].innerHTML == '')
             td[i].style.backgroundColor = '#202020';
     }
