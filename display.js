@@ -91,7 +91,10 @@ function    display(color)
                 td[i].id = td[i + (8 - i % 9)].innerHTML;
         }
         if (i % 2 == 1 && td[i].innerHTML == '')
+        {
             td[i].style.backgroundColor = '#202020';
+            td[i].style.color = '#202020';
+        }
     }
 	for (i = 0; i < pieces.length; ++i)
 	{
