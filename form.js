@@ -2,8 +2,8 @@ function form_nempty(value)
 {
 	if (value == "")
 		{
-			alert("Error : At least one move field is empty." + "\n"
-				+ "It must be like '[LETTER A - H][NUMBER 1 - 8]'.");
+			alert("Error : At least one move field is empty."
+				+ "\n" + "Fill it.");
 			return (false);
 		}
 	return (true);
@@ -13,7 +13,7 @@ function form_valid_lenght(value)
 {
 	if (value.length != 2)
 		{
-			alert("Error : Move commad must be like : '[LETTER A - H][NUMBER 1 - 8]'.");
+			alert("Error : This move is not available.");
 			return (false);
 		}
 	return (true);
@@ -21,15 +21,10 @@ function form_valid_lenght(value)
 
 function form_valid_pattern(value)
 {
-	if (!((value[0] >= 'A') && (value[0] <= 'H')))
+	if (!((value[0] >= 'A') && (value[0] <= 'H'))
+		|| (!((value[1] >= 1) && (value[1] <= 8))))
 		{
-			alert("Error : Bad letter : [A - H].");
-			return (false);
-		}
-
-	if (!((value[1] >= 1) && (value[1] <= 8)))
-		{
-			alert("Error : Bad number : [1 - 8].");
+			alert("Error : This move is unvailable.");
 			return (false);
 		}
 	return (true);
@@ -61,7 +56,6 @@ function get_data_form()
 {
 	var depart = document.getElementById("depart").value;
 	var arrivee = document.getElementById("arrivee").value;
-
 
 	if ((form_nempty(depart) == false) || (form_nempty(arrivee) == false))
 		return (false);

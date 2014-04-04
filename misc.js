@@ -15,15 +15,13 @@ function chain_to_coord(str)
 {
 	var tab = new Array();
 	if (str.length != 2)
-		alert("Error : Move commad must be like : '[LETTER A - H][NUMBER 1 - 8]'. ");
+		alert("Error : This move is unvailable.");
 	if (!(str[0] >= 'A' && str[0] <= 'H'))
-		alert("Error : Bad letter : [A - H]");
+		alert("Error : This move is unvailable.");
 	if (!(str[1] >= '1' && str[1] <= '8'))
-		alert("Error : Bad number : [1 - 8]");
-
+		alert("Error : This move is unvailable.");
 	tab[0] = give_x(str.charAt(1));
 	tab[1] = give_y(str.charAt(0));
-
 	return (tab);
 }
 
