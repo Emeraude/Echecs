@@ -235,7 +235,10 @@ function calc_cavalier_possibs(x, y, pion)
 		possibs.push(Array(x + 1, y - 2, false));
 
 	if (isEmpty(x + 1, y + 2))
+	{
+		console.log('toto');
 		possibs.push(Array(x + 1, y + 2, true));
+	}
 	else if (isEatable(x + 1, y + 2, player))
 		possibs.push(Array(x + 1, y + 2, false));
 

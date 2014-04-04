@@ -4,7 +4,6 @@ Here are the following functions used for cheking if there is a check of a check
 getKing(color) will return the king informations of the specified color
 isInCheck(color) will return a boolean that inform us if the choosen player is in check
 checkMate(color) will return a boolean that inform us if the choosen player is in checkmate (is that case, he loose the game)
-
 */
 
 function getKing(color)
