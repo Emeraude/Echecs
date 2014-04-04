@@ -85,7 +85,10 @@ function    display(color)
             td[i].id = td[i - i % 9].innerHTML+td[i % 9].innerHTML;
         else
         {
-            td[i].id = td[i + (8 - i % 9)].innerHTML+(i % 9);
+            if ((8 - i % 9) != 0)
+                td[i].id = td[i + (8 - i % 9)].innerHTML+(8 - i % 9);
+            else
+                td[i].id = td[i + (8 - i % 9)].innerHTML;
         }
         if (i % 2 == 1 && td[i].innerHTML == '')
             td[i].style.backgroundColor = '#202020';
