@@ -2,8 +2,8 @@ function form_nempty(value)
 {
 	if (value == "")
 		{
-			alert("Error : At least one move field is empty." + "\n"
-				+ "Fill it.");
+			alert("Error : At least one move field is empty."
+				+ "\n" + "Fill it.");
 			return (false);
 		}
 	return (true);
@@ -56,7 +56,6 @@ function get_data_form()
 {
 	var depart = document.getElementById("depart").value;
 	var arrivee = document.getElementById("arrivee").value;
-
 
 	if ((form_nempty(depart) == false) || (form_nempty(arrivee) == false))
 		return (false);
