@@ -210,7 +210,7 @@ function check_end_turn(pos_x, pos_y, elem)
     elem.pos_y = pos_y;
     if (isInCheck(tour) == false)
     {
-        tour = (tour = blanc ? noir : blanc);
+        tour = (tour == blanc ? noir : blanc);
         display(tour);
     }
     else if (isInCheck(tour) == true)
@@ -219,22 +219,28 @@ function check_end_turn(pos_x, pos_y, elem)
         elem.pos_y = old_pos_y;
         display(tour);
     }
-    else if (CheckAndMat(tour) == true)
+    else if (CheckMate(tour) == true)
         alert("Player"+color+"wins");
 }
 
 function isInCheck(color)
 {
 	king = getKing(color);
-	for (i = 0; i < pieces.length; i++)
+	for (j = 0; j < pieces.length; ++j)
     {
-        if (pieces[i].canMove(king.pos_x, king.pos_y) && pieces[i].joueur != color)
+        if (pieces[j].canMove(king.pos_x, king.pos_y) && pieces[j].joueur != color)
          {
-         	alert(i);
             return (true);
         }
     }
     return (false);
+}
+
+function checkMate(color)
+{
+	if (!isInCheck(color))
+		return (false);
+	king = getKing(color);
 }
 
 tabulate_html();
