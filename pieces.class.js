@@ -27,6 +27,8 @@ function Piece(x, y, joueur)
 		{
 			this.pos_x = x;
 			this.pos_y = y;
+			if (typeof(this.played))
+				this.played = true;
 			return true;
 		}
 		return false;

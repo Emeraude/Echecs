@@ -1,11 +1,11 @@
-function give_x(letter)
+function give_y(letter)
 {
 	letter = letter.charCodeAt(letter) - 17;
 	letter = String.fromCharCode(letter);
 	return (letter);
 }
 
-function give_y(number)
+function give_x(number)
 {
 	return (number - 1);
 }
@@ -20,8 +20,8 @@ function chain_to_coord(str)
 	if (!(str[1] >= '1' && str[1] <= '8'))
 		alert("Error : Bad number : [1 - 8]");
 
-	tab[0] = give_x(str.charAt(0));
-	tab[1] = give_y(str.charAt(1));
+	tab[0] = give_x(str.charAt(1));
+	tab[1] = give_y(str.charAt(0));
 	return (tab);
 }
 
