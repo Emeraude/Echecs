@@ -90,7 +90,8 @@ function calc_roi_possibs(x, y, pion)
 	else if (isEatable(x - 1, y + 1, player))
 		possibs.push(Array(x - 1, y + 1, false));
 	return (possibs);
-} 
+}
+
 function calc_dame_possibs(x, y, pion)
 {
 	var possibs = new Array();
@@ -269,7 +270,6 @@ function calc_cavalier_possibs(x, y, pion)
 		possibs.push(Array(x - 1, y + 2, false));
 
 	return possibs;
-
 }
 
 function calc_pion_possibs(x, y, pion)
