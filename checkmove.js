@@ -30,10 +30,14 @@ function	my_line_alt(alt, piece, king)
     while (i < pieceMoves.length)
     {
 	if (axe == 0)
-	    if (pieceMoves[axe] == king.pos_x && pieceMoves[2] == true)
+	    if ((pieceMoves[i][axe] == king.pos_x && pieceMoves[i][2] == true) &&
+		((pieceMoves[i][1] > piece.pos_y && pieceMoves[i][1] < king.pos_y) ||
+		 (pieceMoves[i][1] < piece.pos_y && pieceMoves[i][1] > king.pos_y)))
 		alt.push(pieceMoves[i]);
 	if (axe == 1)
-	    if (pieceMoves[axe] == king.pos_y && pieceMoves[2] == true)
+	    if ((pieceMoves[i][axe] == king.pos_y && pieceMoves[i][2] == true) &&
+		((pieceMoves[i][0] > piece.pos_x && pieceMoves[i][0] < king.pos_x) ||
+		 (pieceMoves[i][0] < piece.pos_x && pieceMoves[i][0] > king.pos_x)))
 		alt.push(pieceMoves[i]);
 	i++;
     }
