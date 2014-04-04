@@ -106,7 +106,7 @@ function calc_tour_possibs(x, y, pion)
 {
 	var possibs = new Array();
 	var player = getPieceColor(x, y);
-	var i = x;
+	var i = x + 1;
 
 	while (i < 8)
 	{
@@ -120,7 +120,7 @@ function calc_tour_possibs(x, y, pion)
 		}
 		i++;
 	}
-	i = x;
+	i = x - 1;
 
 	while (i >= 0)
 	{
@@ -134,7 +134,7 @@ function calc_tour_possibs(x, y, pion)
 		}
 		i--;
 	}
-	i = y;
+	i = y + 1;
 
 	while (i < 8)
 	{
@@ -148,7 +148,7 @@ function calc_tour_possibs(x, y, pion)
 		}
 		i++;
 	}
-	i = y;
+	i = y - 1;
 	while (i >= 0)
 	{
 		if (isEmpty(x, i))
@@ -288,7 +288,7 @@ function calc_pion_possibs(x, y, pion)
 			if (isEatable(x - 1, y + 1, player))
 				possibs.push(Array(x - 1, y + 1, false));
 
-			if (pion.played == false && isEmpty(x, y + 2))
+			if (pion.played == false && isEmpty(x, y + 1) && isEmpty(x, y + 2))
 					possibs.push(Array(x, y + 2, true));
 		}
 	else
@@ -302,8 +302,8 @@ function calc_pion_possibs(x, y, pion)
 			if (isEatable(x + 1, y - 1, player))
 				possibs.push(Array(x + 1, y, false));
 
-			if (pion.played == false && isEmpty(x, y -2))
-					possibs.push(Array(x, y - 2, true));
+			if (pion.played == false && isEmpty(x, y - 1) && isEmpty(x, y - 2))
+				possibs.push(Array(x, y - 2, true));
 		}
 
 	return (possibs);
