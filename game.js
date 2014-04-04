@@ -9,7 +9,6 @@ display(color) will display all the pieces in the map
 isEmpty(x, y) will return a boolean that inform us if the case map[x][y] is empty or not
 getPiece(x, y) will return the piece in the case map[x][y], or false if there is no piece
 getPieceColor(x, y) will return the color of the piece in the case map[x][y], or false if there is no piece
-getKing(color) will return the king informations of the specified color
 deletePiece(x, y) will delete the piece in the case map[x][y]
 */
 
@@ -182,16 +181,6 @@ function getPieceColor(x, y)
 		return (piece.joueur);
 }
 
-function getKing(color)
-{
-	for (i = 0; i < pieces.length; i++)
-    {
-        if (pieces[i].piece == 'roi' && pieces[i].joueur == color)
-            return (pieces[i]);
-    }
-    return (false);
-}
-
 function deletePiece(x, y)
 {
 	for (i = 0; i < pieces.length; i++)
@@ -232,35 +221,6 @@ function check_end_turn(pos_x, pos_y, elem)
         alert("Player"+color+"wins");
 }
 
-function isInCheck(color)
-{
-	king = getKing(color);
-	for (j = 0; j < pieces.length; ++j)
-    {
-        if (pieces[j].canMove(king.pos_x, king.pos_y) && pieces[j].joueur != color)
-         {
-            return (true);
-        }
-    }
-    return (false);
-}
-
-function checkMate(color)
-{
-	/*if (!isInCheck(color))
-		return (false);*/
-	king = getKing(color);
-	casesAround = new Array();
-	for (i = king.pos_x - 1; i <= king.pos_x + 1; ++i)
-	{
-		for(j = king.pos_y - 1; j <= king.pos_y + 1; ++j)
-		{
-			if (i >= 0 && i < 8 && j >= 0 && j < 8)
-				casesAround.push(new Array(i, j));
-		}
-	}
-	return casesAround;
-}
 
 tabulate_html();
 initGame();
