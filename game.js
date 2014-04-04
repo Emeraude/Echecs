@@ -124,9 +124,8 @@ function check_end_turn(pos_x, pos_y, elem)
         display(tour);
     }
     else if (CheckMate(tour) == true)
-        alert("Player"+color+"wins");
+        alert("Player"+tour+"wins");
 }
-
 
 tabulateHtml();
 initGame();
