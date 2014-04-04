@@ -34,11 +34,12 @@ $(document).ready(function(){
 
     $("#echiquier td").on("click", function(){
 	var id = $(this).attr("id");
-	var coo = chain_to_coord(id);
 	var moveType = 0;
+	var coo;
 
 	if (my_is_playable_cell(id) == false)
 	    return (-1);
+	coo = chain_to_coord(id);
 	moveType = my_click_is_move(id);
 	if (isEmpty(coo[0], coo[1]) == true)
 	{
