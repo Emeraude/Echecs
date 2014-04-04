@@ -1,12 +1,14 @@
 /*
 Here are the following functions used for cheking if there is a check of a checkmate
 
+initCheck() will create a new map in a check situation (developpers only)
 getKing(color) will return the king informations of the specified color
-isInCheck(color) will an array which contain all the pieces that checked the king, or false if there is no
-checkMate(color) will return a boolean that inform us if the choosen player is in checkmate (is that case, he loose the game)
+isInCheck() will an array which contain all the pieces that checked the king, or false if there is no
+canWeEatThatSucker(x, y) will return an array which contains coordonates of pieces which can eat the piece (located in (x,y)) threating the king
+kingEscape() will return true if the king can move without being check, false if not
 */
 
-function initCheck(color)
+function initCheck()
 {
 	pieces = [];
 
@@ -16,10 +18,7 @@ function initCheck(color)
 	pieces.push(new Roi(5, 5, blanc));
 	pieces.push(new Pion(2, 5, blanc));
 
-	if (color == undefined)
-		display(blanc);
-	else
-		display(color);
+	display(blanc);
 }
 
 function getKing(color)
@@ -49,21 +48,42 @@ function isInCheck()
 		return tab;
 }
 
-function checkMate(color)
+function canBlockCheck(dangerousPositions, color)
 {
-	/*if (!isInCheck(color))
-		return (false);*/
-	king = getKing(color);
-	casesAround = new Array();
-	for (i = king.pos_x - 1; i <= king.pos_x + 1; ++i)
+	oldPieces = pieces.slice(0);
+	tab = new Array();
+
+	for (j = 0; j < dangerousPositions.length; ++j)
 	{
-		for(j = king.pos_y - 1; j <= king.pos_y + 1; ++j)
+		tmpPos = dangerousPositions[j];
+		pieces = oldPieces.slice(0);
+		for (k = 0; k < pieces.length; ++k)
 		{
-			if (i >= 0 && i < 8 && j >= 0 && j < 8)
-				casesAround.push(new Array(i, j));
+			if (pieces[k].joueur != color || pieces[k].piece == 'roi')
+				continue ;
+			console.log(pieces[k].canMove(tmpPos[0], tmpPos[1]))
+			if (pieces[k].canMove(tmpPos[0], tmpPos[1]))
+			{
+				console.log('['+tmpPos[0]+';'+tmpPos[1]+'] '+pieces[k].piece);
+				console.log(pieces[k]);
+				old_x = pieces[k].pos_x;
+				old_y = pieces[k].pos_y;
+				pieces[k].pos_x = tmpPos[0];
+				pieces[k].pos_y = tmpPos[1];
+				console.log(pieces[k]);
+				if (isInCheck(color) == false)
+				{
+					tab.push(tmpPos);
+					console.log('there is a solution');
+				}
+				pieces[k].pos_x = old_x;
+				pieces[k].pos_y = old_y;
+				console.log(pieces[k]);
+			}
 		}
 	}
-	return casesAround;
+	pieces = oldPieces.slice(0);
+	return tab;
 }
 
 function canWeEatThatSucker(x, y)
@@ -86,4 +106,27 @@ function canWeEatThatSucker(x, y)
 		}
 	}
 	return whoCan;
+}
+
+function kingEscape()
+{
+	king = getKing(tour);
+	x = king.pox_x;
+	y = king.pos_y;
+
+	possibs = movePossibs(king.pos_x, king.pos_y);
+	for (i in possibs)
+	{
+		king.pos_x = possibs[i][0];
+		king.pos_y = possibs[i][1];
+		if (isInCheck())
+		{
+			king.pos_x = x;
+			king.pos_y = y;
+			return true;
+		}
+	}
+	king.pos_x = x;
+	king.pos_y = y;
+	return false;
 }
