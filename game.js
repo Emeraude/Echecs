@@ -117,11 +117,11 @@ function check_end_turn(pos_x, pos_y, elem)
         alert("Player"+tour+"has to replay: isInCheck");
         display(tour);
     }
-    if (checkMate(tour))
+    /*if (checkMate(tour))
     {
         tour = (tour == blanc ? noir : blanc);
         alert("Player"+tour+"wins");
-    }
+    }*/
 }
 
 tabulateHtml();
