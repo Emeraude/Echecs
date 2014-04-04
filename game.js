@@ -104,7 +104,7 @@ function check_end_turn(pos_x, pos_y, elem)
     old_pos_y = elem.pos_y;
     elem.pos_x = pos_x;
     elem.pos_y = pos_y;
-    if (isInCheck(tour) == false)
+    if (isInCheck() == false)
     {
         elem.pos_x = old_pos_x;
         elem.pos_y = old_pos_y;
@@ -112,7 +112,7 @@ function check_end_turn(pos_x, pos_y, elem)
         tour = (tour == blanc ? noir : blanc);
         display(tour);
     }
-    else if (checkMate(tour) == false)
+    else if (isInCheck() == false)
     {
         elem.pos_x = old_pos_x;
         elem.pos_y = old_pos_y;
