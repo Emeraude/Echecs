@@ -59,7 +59,9 @@ function    clearTable()
     {
         td[i].style.backgroundImage = "none";
         td[i].style.backgroundColor = "white";
+        td[i].removeAttribute("id");
         td[i].innerHTML = "";
+        td[i].style.borderColor = "black";
     }
 }
 
@@ -95,11 +97,14 @@ function    display(color)
             td[i].style.backgroundColor = '#202020';
             td[i].style.color = '#202020';
         }
-        else if (td[i].innerHTML == '')
+        else if (td[i].innerHTML != '')
         {
+            alert(td[i].id);
             td[i].style.backgroundColor = blanc;
-            td[i].style.color = 'white';
+            td[i].style.color = 'none';
         }
+        else
+            td[i].style.color = 'white';
     }
 	for (i = 0; i < pieces.length; ++i)
 	{
