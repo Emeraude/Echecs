@@ -1,16 +1,30 @@
+body
+{
+    background-color: #FCFAE1;
+}
+
+h1
+{
+    text-align: center;
+    background-color: #795344;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
 #wrapper
 {
     width: 1000px;
     height: 800px;
-    background-color: gray;
+    background-color: #89725B;
     margin-top: 50px;
     margin-left: auto;
     margin-right: auto;
+    padding-top: 10px;
+    padding-top: 10px;
 }
 
 #section
 {
-    padding-top: 50px;
 }
 
 #echiquier
@@ -35,7 +49,10 @@
 #inputs
 {
     text-align: center;
-    margin-top: 10px;
+    margin-top: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #795344;
 }
 
 #inputs table
