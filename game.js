@@ -221,7 +221,6 @@ function check_end_turn(pos_x, pos_y, elem)
         alert("Player"+tour+"wins");
 }
 
-
 tabulate_html();
 initGame();
 display(blanc);
