@@ -32,13 +32,13 @@ function getKing(color)
 	return (false);
 }
 
-function isInCheck(color)
+function isInCheck()
 {
-	king = getKing(color);
+	king = getKing(tour);
 	tab = new Array();
 	for (j = 0; j < pieces.length; ++j)
 	{
-		if (pieces[j].canMove(king.pos_x, king.pos_y) && pieces[j].joueur != color)
+		if (pieces[j].joueur != tour && pieces[j].canMove(king.pos_x, king.pos_y))
 		{
 			tab.push(new Array(pieces[j].pos_x, pieces[j].pos_y));
 		}
