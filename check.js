@@ -5,6 +5,7 @@ getKing(color) will return the king informations of the specified color
 isInCheck(color) will an array which contain all the pieces that checked the king, or false if there is no
 checkMate(color) will return a boolean that inform us if the choosen player is in checkmate (is that case, he loose the game)
 canWeEatThatSucker(x, y) will return an array which contains coordonates of pieces which can eat the piece (located in (x,y)) threating the king
+kingEscape() will return true if the king can move without being check, false if not
 */
 
 function initCheck(color)
