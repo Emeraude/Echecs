@@ -2,6 +2,7 @@ function give_y(letter)
 {
 	letter = letter.charCodeAt(letter) - 17;
 	letter = String.fromCharCode(letter);
+	letter = parseInt(letter);
 	return (letter);
 }
 
@@ -22,6 +23,7 @@ function chain_to_coord(str)
 
 	tab[0] = give_x(str.charAt(1));
 	tab[1] = give_y(str.charAt(0));
+
 	return (tab);
 }
 
