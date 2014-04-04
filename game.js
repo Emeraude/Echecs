@@ -13,7 +13,6 @@ getKing(color) will return the king informations of the specified color
 deletePiece(x, y) will delete the piece in the case map[x][y]
 */
 
-map = [8][8];
 pieces = new Array();
 
 function    initPlayer(color)
@@ -175,7 +174,11 @@ function getPiece(x, y)
 
 function getPieceColor(x, y)
 {
-	return (getPiece(x, y).joueur);
+	piece = getPiece(x, y);
+	if (piece == false)
+		return false;
+	else
+		return (piece.joueur);
 }
 
 function getKing(color)
@@ -243,9 +246,19 @@ function isInCheck(color)
 
 function checkMate(color)
 {
-	if (!isInCheck(color))
-		return (false);
+	/*if (!isInCheck(color))
+		return (false);*/
 	king = getKing(color);
+	casesAround = new Array();
+	for (i = king.pos_x - 1; i <= king.pos_x + 1; ++i)
+	{
+		for(j = king.pos_y - 1; j <= king.pos_y + 1; ++j)
+		{
+			if (i >= 0 && i < 8 && j >= 0 && j < 8)
+				casesAround.push(new Array(i, j));
+		}
+	}
+	return casesAround;
 }
 
 tabulate_html();
