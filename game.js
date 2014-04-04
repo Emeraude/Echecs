@@ -51,6 +51,8 @@ function isEmpty(x, y)
 
 function isEatable(x, y, joueur)
 {
+	if (joueur == tour)
+		return false;
 	if (!isEmpty(x, y) && (piece = getPiece(x, y)) != false)
 	{
 		if (piece.joueur != joueur)
