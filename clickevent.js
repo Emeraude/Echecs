@@ -90,9 +90,9 @@ function	my_moves_op(action)
 	if (action == true)
 	{
 	    if (moves[i][2] == true)
-		$("#" + id).css("background-image", "url(img/blue.png)");
+			$("#" + id).css("background-image", "url(img/blue.png)");
 	    else
-		$("#" + id).css("background-image", "url(img/red.png)");
+			$("#" + id).css("background-image", "url(img/red.png)");
 	}
 	else
 	    $("#" + id).css("background-image", "none");
