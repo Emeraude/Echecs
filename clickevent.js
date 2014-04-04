@@ -5,6 +5,15 @@
 **		boo: true, l'action est un deplacement, false, l'action est manger un pion adverse
 **
 **	selectedPieceCoo: tableau contenant les coordonnees de la piece selectionnee (x, y)
+**
+** fonctions:
+**	my_click_is_move(id): prend un id et retourne -1 si la case n'est pas une action possible (move, eat)
+**			      retourne 1 si c'est un move, 2 si c'est un eat
+**	my_moves_op(action): prend un booleen, si action == true, affiche les possibilites,
+**			     si action == false, les cache
+**	my_is_playable_cell(id): prend un id, retourne true si la case est une case jouable 
+**				 (qui n'est pas une coordonnee), sinon false
+**
 */
 
 var moves = new Array();
@@ -37,21 +46,20 @@ $(document).ready(function(){
 
 	    my_moves_op(false);
 	    if (moveType == 1) // move
-		piece.move(coo[0], coo[1]);
-	    display(blanc); // change turn and shit
+		check_end_turn(coo[0], coo[1], piece);
 	    moves.length = 0;
 	}
 	else
 	{
 	    if (moveType == 2) // eat
 	    {
-		alert("eat");
-		display(blanc); // change turn and shit
+		check_end_turn(coo[0], coo[1], piece);
 		moves.length = 0;
 	    }
 	    else
 	    {
 		my_moves_op(false);
+		console.log(coo[0] + coo[1]); ///////l
 		moves = movePossibs(coo[0], coo[1]); // have to check return value
 		selectedPieceCoo = coo;
 		my_moves_op(true);
