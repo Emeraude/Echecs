@@ -25,9 +25,10 @@ function Piece(x, y, joueur)
 	{
 		if (this.canMove(x, y))
 		{
+			deletePiece(x, y);
 			this.pos_x = x;
 			this.pos_y = y;
-			if (typeof(this.played))
+			if (this.piece == 'pion')
 				this.played = true;
 			return true;
 		}
