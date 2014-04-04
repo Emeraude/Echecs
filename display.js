@@ -59,6 +59,7 @@ function    clearTable()
     {
         td[i].style.backgroundImage = "none";
         td[i].style.backgroundColor = "white";
+        td[i].removeAttribute("style");
         td[i].removeAttribute("id");
         td[i].innerHTML = "";
         td[i].style.borderColor = "black";
