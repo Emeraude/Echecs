@@ -31,13 +31,13 @@ $(document).ready(function(){
 	if (my_is_playable_cell(id) == false)
 	    return (-1);
 	moveType = my_click_is_move(id);
-	if (isEmpty(coo[1], coo[0]) == true)
+	if (isEmpty(coo[0], coo[1]) == true)
 	{
-	    var piece = getPiece(selectedPieceCoo[1], selectedPieceCoo[0]);
+	    var piece = getPiece(selectedPieceCoo[0], selectedPieceCoo[1]);
 
 	    my_moves_op(false);
 	    if (moveType == 1) // move
-		piece.move(coo[1], coo[0]);
+		piece.move(coo[0], coo[1]);
 	    display(blanc); // change turn and shit
 	    moves.length = 0;
 	}
@@ -52,7 +52,7 @@ $(document).ready(function(){
 	    else
 	    {
 		my_moves_op(false);
-		moves = movePossibs(coo[1], coo[0]); // have to check return value
+		moves = movePossibs(coo[0], coo[1]); // have to check return value
 		selectedPieceCoo = coo;
 		my_moves_op(true);
 	    }
@@ -67,7 +67,7 @@ function	my_click_is_move(id)
 
     while (i < moves.length)
     {
-	if (idCoo[1] == moves[i][0] && idCoo[0] == moves[i][1])
+	if (idCoo[0] == moves[i][0] && idCoo[1] == moves[i][1])
 	{
 	    if (moves[i][2] == true)
 		return (1);
