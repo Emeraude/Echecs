@@ -53,7 +53,7 @@ function calc_roi_possibs(x, y, pion)
 	if (isEmpty(x , y - 1))
 		possibs.push(Array(x, y - 1, true));
 	else if (isEatable(x , y - 1, player))
-		possibs.push(Array(x , y - 1, false))
+		possibs.push(Array(x , y - 1, false));
 	
 	if (isEmpty(x , y + 1))
 		possibs.push(Array(x , y + 1, true));
@@ -249,24 +249,24 @@ function calc_cavalier_possibs(x, y, pion)
 		possibs.push(Array(x - 1, y + 2, false));
 
 	if (isEmpty(x + 2, y - 1))
-		possibs.push(Array(x + 1, y - 2, true));
-	else if (isEatable(x + 1, y - 2, player))
-		possibs.push(Array(x + 1, y - 2, false));
+		possibs.push(Array(x + 2, y - 1, true));
+	else if (isEatable(x + 2, y - 1, player))
+		possibs.push(Array(x + 2, y - 1, false));
 
 	if (isEmpty(x + 2, y + 1))
-		possibs.push(Array(x + 1, y + 2, true));
-	else if (isEatable(x + 1, y + 2, player))
-		possibs.push(Array(x + 1, y + 2, false));
+		possibs.push(Array(x + 2, y + 1, true));
+	else if (isEatable(x + 2, y + 1, player))
+		possibs.push(Array(x + 2, y + 1, false));
 
 	if (isEmpty(x - 2, y - 1))
-		possibs.push(Array(x - 1, y - 2, true));
-	else if (isEatable(x - 1, y - 2, player))
-		possibs.push(Array(x - 1, y - 2, false));
+		possibs.push(Array(x - 2, y - 1, true));
+	else if (isEatable(x - 2, y - 1, player))
+		possibs.push(Array(x - 2, y - 1, false));
 
 	if (isEmpty(x - 2, y + 1))
-		possibs.push(Array(x - 1, y + 2, true));
-	else if (isEatable(x - 1, y + 2, player))
-		possibs.push(Array(x - 1, y + 2, false));
+		possibs.push(Array(x - 2, y + 1, true));
+	else if (isEatable(x - 2, y + 1, player))
+		possibs.push(Array(x - 2, y + 1, false));
 
 	return possibs;
 
