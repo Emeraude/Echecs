@@ -16,6 +16,8 @@ function initCheck(color)
 	pieces.push(new Roi(5, 5, noir));
 	pieces.push(new Pion(2, 5, noir));
 
+	tour = noir;
+
 	if (color == undefined)
 		display(blanc);
 	else
