@@ -17,6 +17,8 @@ function initCheck()
 	pieces.push(new Cavalier(5, 2, blanc));
 	pieces.push(new Roi(5, 5, blanc));
 	pieces.push(new Pion(2, 5, blanc));
+
+	display(blanc);
 }
 
 function getKing(color)
