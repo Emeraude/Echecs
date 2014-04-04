@@ -121,10 +121,14 @@ function check_end_turn(pos_x, pos_y, elem)
     {
         elem.pos_x = old_pos_x;
         elem.pos_y = old_pos_y;
+        alert("Player"+tour+"has to replay: isInCheck");
         display(tour);
     }
     else if (CheckMate(tour) == true)
+    {
+        tour = (tour = blanc ? noir : blanc);
         alert("Player"+tour+"wins");
+    }
 }
 
 tabulateHtml();
