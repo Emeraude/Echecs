@@ -62,7 +62,9 @@ $(document).ready(function(){
 	    else
 	    {
 		my_moves_op(false);
-		moves = movePossibs(coo[0], coo[1]); // have to check return value
+		var pion = getPiece(coo[0], coo[1]);
+		if (pion.joueur == tour)
+			moves = movePossibs(coo[0], coo[1]); // have to check return value
 		selectedPieceCoo = coo;
 		my_moves_op(true);
 	    }

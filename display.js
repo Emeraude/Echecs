@@ -114,4 +114,5 @@ function    display(color)
 		tr = document.querySelectorAll('tr')[y];
 		tr.querySelectorAll('td')[x].style.backgroundImage=img;
 	}
+    $("#turn").text(tour);
 }
