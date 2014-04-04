@@ -288,7 +288,7 @@ function calc_pion_possibs(x, y, pion)
 			if (isEatable(x - 1, y + 1, player))
 				possibs.push(Array(x - 1, y + 1, false));
 
-			if (pion.played == false && isEmpty(x, y + 2))
+			if (pion.played == false && isEmpty(x, y + 1) && isEmpty(x, y + 2))
 					possibs.push(Array(x, y + 2, true));
 		}
 	else
@@ -302,8 +302,8 @@ function calc_pion_possibs(x, y, pion)
 			if (isEatable(x + 1, y - 1, player))
 				possibs.push(Array(x + 1, y, false));
 
-			if (pion.played == false && isEmpty(x, y -2))
-					possibs.push(Array(x, y - 2, true));
+			if (pion.played == false && isEmpty(x, y - 1) && isEmpty(x, y - 2))
+				possibs.push(Array(x, y - 2, true));
 		}
 
 	return (possibs);
