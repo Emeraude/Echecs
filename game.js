@@ -110,16 +110,16 @@ function check_end_turn(pos_x, pos_y, elem)
         tour = (tour == blanc ? noir : blanc);
         display(tour);
     }
-    else
+    else if (checkMate(tour) == false)
     {
         elem.pos_x = old_pos_x;
         elem.pos_y = old_pos_y;
         alert("Player"+tour+"has to replay: isInCheck");
         display(tour);
     }
-    if (CheckMate(tour) == true)
+    if (CheckMate(tour))
     {
-        tour = (tour = blanc ? noir : blanc);
+        tour = (tour == blanc ? noir : blanc);
         alert("Player"+tour+"wins");
     }
 }
