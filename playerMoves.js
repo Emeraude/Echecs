@@ -14,28 +14,31 @@ function movePossibs(x, y)
 	var pion;
 	var type;
 	var possibs = new Array();
+	var player = tour;
 
 	pion = getPiece(x, y);
+	if (pion.joueur != tour)
+		return possibs;
 	type = pion.piece;
 	switch (type)
 	{
 		case 'pion':
-			possibs = calc_pion_possibs(x, y, pion); // done
+			possibs = calc_pion_possibs(x, y, pion, tour); // done
 			break;
 		case 'cavalier':
-			possibs = calc_cavalier_possibs(x, y, pion); // done
+			possibs = calc_cavalier_possibs(x, y, pion, tour); // done
 			break;
 		case 'fou':
-			possibs = calc_fou_possibs(x, y, pion); // done
+			possibs = calc_fou_possibs(x, y, pion, tour); // done
 			break;
 		case 'tour':
-			possibs = calc_tour_possibs(x, y, pion); // done
+			possibs = calc_tour_possibs(x, y, pion, tour); // done
 			break;
 		case 'dame':
-			possibs = calc_dame_possibs(x, y, pion); // done
+			possibs = calc_dame_possibs(x, y, pion, tour); // done
 			break;
 		case 'roi':
-			possibs = calc_roi_possibs(x, y, pion); // done
+			possibs = calc_roi_possibs(x, y, pion, tour); // done
 			break;
 		default:
 			possibs = null;
@@ -45,7 +48,7 @@ function movePossibs(x, y)
 	return (possibs);
 }
 
-function calc_roi_possibs(x, y, pion)
+function calc_roi_possibs(x, y, pion, player)
 {
 	var possibs = new Array();
 	var player = getPieceColor(x, y);
@@ -92,7 +95,7 @@ function calc_roi_possibs(x, y, pion)
 	return (possibs);
 }
 
-function calc_dame_possibs(x, y, pion)
+function calc_dame_possibs(x, y, pion, player)
 {
 	var possibs = new Array();
 	var tmp = new Array;
@@ -103,10 +106,9 @@ function calc_dame_possibs(x, y, pion)
 	return possibs;
 }
 
-function calc_tour_possibs(x, y, pion)
+function calc_tour_possibs(x, y, pion, player)
 {
 	var possibs = new Array();
-	var player = getPieceColor(x, y);
 	var i = x + 1;
 
 	while (i < 8)
@@ -165,10 +167,9 @@ function calc_tour_possibs(x, y, pion)
 	return possibs;
 }
 
-function calc_fou_possibs(x, y, pion)
+function calc_fou_possibs(x, y, pion, player)
 {
 	var possibs = new Array();
-	var player = getPieceColor(x, y);
 	var i = 1;
 	while ((x + i) < 8 && (y + i) < 8)
 	{
@@ -224,10 +225,9 @@ function calc_fou_possibs(x, y, pion)
 	return possibs;
 }
 
-function calc_cavalier_possibs(x, y, pion)
+function calc_cavalier_possibs(x, y, pion, player)
 {
 	var possibs = new Array();
-	var player = getPieceColor(x, y);
 
 	if (isEmpty(x + 1, y - 2))
 		possibs.push(Array(x + 1, y - 2, true));
@@ -275,10 +275,9 @@ function calc_cavalier_possibs(x, y, pion)
 	return possibs;
 }
 
-function calc_pion_possibs(x, y, pion)
+function calc_pion_possibs(x, y, pion, player)
 {
 	var possibs = new Array();
-	var player = getPieceColor(x, y);
 
 	if (player == 'noir')
 		{
