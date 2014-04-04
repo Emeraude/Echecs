@@ -95,6 +95,11 @@ function    display(color)
             td[i].style.backgroundColor = '#202020';
             td[i].style.color = '#202020';
         }
+        else
+        {
+            td[i].style.backgroundColor = blanc;
+            td[i].style.color = blanc;
+        }
     }
 	for (i = 0; i < pieces.length; ++i)
 	{
