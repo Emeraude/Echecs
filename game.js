@@ -114,7 +114,7 @@ function check_end_turn(pos_x, pos_y, elem)
         deletePiece(pos_x, pos_y);
         elem.pos_x = pos_x;
         elem.pos_y = pos_y;
-        tour = (tour = blanc ? noir : blanc);
+        tour = (tour == blanc ? noir : blanc);
         display(tour);
     }
     else if (isInCheck(tour) == true)
