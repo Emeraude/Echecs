@@ -60,30 +60,6 @@ function Pion(x, y, joueur)
 	this.parent(x, y, joueur);
 	this.piece = 'pion';
 	this.played = false;
-
-	/*this.canMove = function(x, y)
-	{
-		if (x == this.pos_x)
-		{
-			if (joueur == "noir")
-			{
-			if ((this.played == false && y <= this.pos_y + 2) ||
-				(this.played == true && y <= this.pos_y + 1))
-				return true;
-			}
-			else
-			{
-			if ((this.played == false && y >= this.pos_y - 2) ||
-				(this.played == true && y >= this.pos_y - 1))
-				return true;				
-			}
-		}
-		return false;
-	};
-	this.blocked = function()
-	{
-
-	};*/
 }
 
 function Cavalier(x, y, joueur)
@@ -91,31 +67,6 @@ function Cavalier(x, y, joueur)
 	this.parent = Piece;
 	this.parent(x, y, joueur);
 	this.piece = 'cavalier';
-
-	/*this.canMove = function(x, y)
-	{
-		for (var i = 0; i < pieces.length; i++) {
-			if (pieces[i].joueur == this.joueur && 
-				pieces[i].pos_x == x &&
-				pieces[i].pos_y == y)
-				return false;
-		};
-		if ((this.pos_x == x + 1 && this.pos_y == y + 2) ||
-			(this.pos_x == x - 1 && this.pos_y == y + 2) ||
-			(this.pos_x == x + 2 && this.pos_y == y + 1) ||
-			(this.pos_x == x - 2 && this.pos_y == y + 1) ||
-			(this.pos_x == x + 2 && this.pos_y == y - 1) ||
-			(this.pos_x == x - 2 && this.pos_y == y - 1) ||
-			(this.pos_x == x + 1 && this.pos_y == y - 2) ||
-			(this.pos_x == x - 1 && this.pos_y == y - 2)) {
-			return true;
-		}
-	return false;
-	}
-	this.blocked = function()
-	{
-
-	};*/
 }
 
 function Fou(x, y, joueur)
@@ -123,29 +74,6 @@ function Fou(x, y, joueur)
 	this.parent = Piece;
 	this.parent(x, y, joueur);
 	this.piece = 'fou';
-
-	/*this.canMove = function(x, y)
-	{
-		var x_tmp = this.pos_x;
-		var y_tmp = this.pos_y;
-
-		if (Math.abs(this.pos_x - x) == Math.abs(this.pos_y - y))
-		{
-			while (x_tmp != x && y_tmp != y)
-			{
-				if (!isEmpty(x_tmp, y_tmp))
-					return false;
-				x_tmp < x ? x_tmp++ : x_tmp--;
-				y_tmp < y ? y_tmp++ : y_tmp--;
-			}
-			if (isEmpty(x, y) || isEatable(x, y, joueur))
-				return true;
-		}
-		return false;
-	};
-	this.blocked = function()
-	{
-	};*/
 }
 
 function Tour(x, y, joueur)
@@ -153,37 +81,6 @@ function Tour(x, y, joueur)
 	this.parent = Piece;
 	this.parent(x, y, joueur);
 	this.piece = 'tour';
-
-	/*this.canMove = function(x, y)
-	{
-		if (x == this.pos_x && y != this.pos_y)
-		{
-			var y_tmp = this.pos_y;
-			while (y_tmp != y)
-			{
-				if (!isEmpty(x, y_tmp))
-					return false;
-				y_tmp = (y_tmp < y) ? y_tmp++ : y_tmp--;
-			}
-			return true;
-		}
-		else if (x != this.pos_x && y == this.pos_y)
-		{
-			var x_tmp = this.pos_x;
-			while (x_tmp != x)
-			{
-				if (!isEmpty(x_tmp, y))
-					return false;
-				x_tmp = (x_tmp < x) ? x_tmp++ : x_tmp--;
-			}
-			if (isEmpty(x, y) || isEatable(x, y, joueur))
-				return true;
-		}
-		return false;
-	};
-	this.blocked = function()
-	{
-	};*/
 }
 
 function Dame(x, y, joueur)
@@ -191,20 +88,6 @@ function Dame(x, y, joueur)
 	this.parent = Piece;
 	this.parent(x, y, joueur);
 	this.piece = 'dame';
-
-	/*this.canMove = function(x, y)
-	{
-		tour = new Tour(this.pos_x, this.pos_y, joueur).canMove(x, y);
-		fou = new Fou(this.pos_x, this.pos_y, joueur).canMove(x, y);
-
-		if (tour || fou)
-			return true;
-		return false;
-	};
-	this.blocked = function()
-	{
-
-	};*/
 }
 
 function Roi(x, y, joueur)
@@ -212,22 +95,4 @@ function Roi(x, y, joueur)
 	this.parent = Piece;
 	this.parent(x, y, joueur);
 	this.piece = 'roi';
-
-	/*this.canMove = function(x, y)
-	{
-		if ((x >= this.pos_x - 1 && x <= this.pos_x + 1) && (y >= this.pos_y - 1 && y <= this.pos_y + 1))
-			return true;
-
-		for (var i = 0; i < pieces.length; i++) {
-			if (pieces[i].joueur == this.joueur && 
-				pieces[i].pos_x == x &&
-				pieces[i].pos_y == y)
-				return false;
-		};
-	return false;
-	};
-	this.blocked = function()
-	{
-
-	};*/
 }
