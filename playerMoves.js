@@ -100,7 +100,7 @@ function calc_dame_possibs(x, y, pion, player)
 	var possibs = new Array();
 	var tmp = new Array;
 
-	possibs = calc_tour_possibs(x, y, pion);
+	possibs = calc_tour_possibs(x, y, pion, player);
 	tmp = calc_fou_possibs(x, y, pion);
 	possibs = possibs.concat(tmp);
 	return possibs;
