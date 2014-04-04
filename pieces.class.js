@@ -29,7 +29,15 @@ function Piece(x, y, joueur)
 			this.pos_x = x;
 			this.pos_y = y;
 			if (this.piece == 'pion')
+			{
 				this.played = true;
+				if (this.pos_y == 0 || this.pos_y == 7)
+				{
+					joueur = this.joueur;
+					deletePiece(x, y);
+					pieces.push(new Dame(x, y, joueur));
+				}
+			}
 			return true;
 		}
 		return false;
