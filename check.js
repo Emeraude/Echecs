@@ -22,6 +22,18 @@ function initCheck()
 	display(blanc);
 }
 
+function initCheck1()
+{
+	pieces = [];
+
+	pieces.push(new Tour(0, 5, noir));
+	pieces.push(new Fou(6, 4, noir));
+	pieces.push(new Cavalier(5, 2, blanc));
+	pieces.push(new Roi(5, 5, blanc));
+
+	display(blanc);
+}
+
 function initCheckMate()
 {
 	pieces = [];
@@ -111,6 +123,8 @@ function canWeEatThatSucker(x, y)
 			}
 		}
 	}
+	if (whoCan.length == 0)
+		return false;
 	return whoCan;
 }
 

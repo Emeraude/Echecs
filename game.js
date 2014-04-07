@@ -120,9 +120,11 @@ function check_end_turn(pos_x, pos_y, elem)
     {
     	toBlock = my_no_check(threats);
     	if (threats.length == 1)
+        {
     		piecesQuiPeuventBoufferLaMenace = canWeEatThatSucker(toBlock[0][0], toBlock[0][1]);
-    	if (typeof(piecesQuiPeuventBoufferLaMenace) && piecesQuiPeuventBoufferLaMenace.length == 0)
-    		alert('Mat');
+        	if (piecesQuiPeuventBoufferLaMenace == false)
+        		alert('Mat');
+        }
         elem.pos_x = old_pos_x;
         elem.pos_y = old_pos_y;
         alert("Player "+tour+" has to replay: isInCheck");
