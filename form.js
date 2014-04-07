@@ -79,4 +79,8 @@ function get_data_form()
 
 	piece = getPiece(d_coord[0], d_coord[1]);
 	check_end_turn(a_coord[0], a_coord[1], piece);
+
+	var inputs = document.querySelectorAll('input');
+	inputs[0].value = '';
+	inputs[1].value = '';
 }
