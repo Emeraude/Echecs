@@ -108,34 +108,29 @@ function check_end_turn(pos_x, pos_y, elem)
 
     old_pos_x = elem.pos_x;
     old_pos_y = elem.pos_y;
-    if (isInCheck() != false)
+    if (isInCheck() !== false)
     	check_before = true;
     elem.move(pos_x, pos_y);
-    if (check_before == false)
+    threats = isInCheck();
+    if (check_before == false && (threats != null))
     {
-	    if ((threats = isInCheck()) == false)
-	    {
-			tour = (tour == blanc ? noir : blanc);
-	        display(tour);
-	    }
-	    else
-	    {
 	    	toBlock = my_no_check(threats);
-	    	if (threats.length == 1 && canWeEatThatSucker(threats[0][0], threats[0][1]) == false && kingEscape() == false)
+	    	if ((threats.length == 1) && (canWeEatThatSucker(threats[0][0], threats[0][1]) == false))
 	        {
-	        	alert('Mat');
+				alert('Mat');
 	        }
+	        if (kingEscape() == false)
+	        	alert('Mat');
 	     	else
 	        {
 				tour = (tour == blanc ? noir : blanc);
 				display(tour);
 			}
-	    }
 	}
-	else if (isInCheck() != false)
+	else if (isInCheck() != null)
 	{
         elem.move(old_pos_x, old_pos_y);
-        if (oldElem)
+        if (oldElem !== false)
         	pieces.push(oldElem);
         alert("Player "+tour+" has to replay: isInCheck");
     }
