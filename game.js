@@ -100,11 +100,15 @@ function deletePiece(x, y)
 
 function check_end_turn(pos_x, pos_y, elem)
 {
+	var threats;
+	var toBlock;
+	var piecesQuiPeuventBoufferLaMenace;
+
     old_pos_x = elem.pos_x;
     old_pos_y = elem.pos_y;
     elem.pos_x = pos_x;
     elem.pos_y = pos_y;
-    if (isInCheck() == false)
+    if ((threats = isInCheck()) == false)
     {
         elem.pos_x = old_pos_x;
         elem.pos_y = old_pos_y;
@@ -112,18 +116,18 @@ function check_end_turn(pos_x, pos_y, elem)
         tour = (tour == blanc ? noir : blanc);
         display(tour);
     }
-    else if (isInCheck() == false)
+    else
     {
+    	toBlock = my_no_check(threats);
+    	if (threats.length == 1)
+    		piecesQuiPeuventBoufferLaMenace = canWeEatThatSucker(toBlock[0][0], toBlock[0][1]);
+    	if (typeof(piecesQuiPeuventBoufferLaMenace) && piecesQuiPeuventBoufferLaMenace.length == 0)
+    		alert('Mat');
         elem.pos_x = old_pos_x;
         elem.pos_y = old_pos_y;
-        alert("Player"+tour+"has to replay: isInCheck");
+        alert("Player "+tour+" has to replay: isInCheck");
         display(tour);
     }
-    /*if (checkMate(tour))
-    {
-        tour = (tour == blanc ? noir : blanc);
-        alert("Player"+tour+"wins");
-    }*/
 }
 
 tabulateHtml();
