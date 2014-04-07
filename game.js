@@ -115,9 +115,6 @@ function check_end_turn(pos_x, pos_y, elem)
     {
 	    if ((threats = isInCheck()) == false)
 	    {
-	        elem.pos_x = old_pos_x;
-	        elem.pos_y = old_pos_y;
-	        elem.move(pos_x, pos_y);
 			tour = (tour == blanc ? noir : blanc);
 	        display(tour);
 	    }
@@ -130,12 +127,11 @@ function check_end_turn(pos_x, pos_y, elem)
 	        	if (piecesQuiPeuventBoufferLaMenace == false)
 	        	{
 	        		if (kingEscape() == false)
+	        		{
 	        			alert('Mat');
+	        		}
 	        		else
 	        		{
-				        elem.pos_x = old_pos_x;
-				        elem.pos_y = old_pos_y;
-				        elem.move(pos_x, pos_y);
 						tour = (tour == blanc ? noir : blanc);
 				        display(tour);
 				    }
@@ -148,12 +144,10 @@ function check_end_turn(pos_x, pos_y, elem)
         elem.move(old_pos_x, old_pos_y);
         if (oldElem)
         	pieces.push(oldElem);
-
         alert("Player "+tour+" has to replay: isInCheck");
     }
     else
     {        
-	    elem.move(pos_x, pos_y);
 		tour = (tour == blanc ? noir : blanc);
     	display(tour);
 	}
