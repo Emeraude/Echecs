@@ -1,3 +1,15 @@
+/*
+**
+** my_no_check: prend en parametre un tableau 2d des coordonnees des pieces mettant en echec
+**		le roi et renvoie un tableau 2d des coordonnees qu'il faut bloquer pour
+**		proteger le roi et ne plus etre en echec
+** my_line_alt: verifie si le roi est en echec sur les axes horizontaux/verticaux et 
+**		rajoute au tableau alt les coordonnees a bloquer sur ces axes
+** my_diag_alt:	pareil que my_line_alt mais sur les diagonales
+** my_queen_alt: my_line_alt et my_diag_alt
+**
+*/
+
 function	my_no_check(threats)
 { 
     var		alt = new Array();
