@@ -64,7 +64,7 @@ $(document).ready(function(){
 		my_moves_op(false);
 		var pion = getPiece(coo[0], coo[1]);
 		if (pion.joueur == tour)
-			moves = movePossibs(coo[0], coo[1]); // have to check return value
+			moves = movePossibs(coo[0], coo[1]);
 		selectedPieceCoo = coo;
 		my_moves_op(true);
 	    }
