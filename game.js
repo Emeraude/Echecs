@@ -121,26 +121,9 @@ function check_end_turn(pos_x, pos_y, elem)
 	    else
 	    {
 	    	toBlock = my_no_check(threats);
-	    	if (threats.length == 1)
+	    	if (threats.length == 1 && canWeEatThatSucker(threats[0][0], threats[0][1]) == false && kingEscape() == false)
 	        {
-	    		piecesQuiPeuventBoufferLaMenace = canWeEatThatSucker(threats[0][0], threats[0][1]);
-	        	if (piecesQuiPeuventBoufferLaMenace == false)
-	        	{
-	        		if (kingEscape() == false)
-	        		{
-	        			alert('Mat');
-	        		}
-	        		else
-	        		{
-						tour = (tour == blanc ? noir : blanc);
-				        display(tour);
-				    }
-	        	}
-	        	else
-	        	{
-					tour = (tour == blanc ? noir : blanc);
-				    display(tour);
-				}
+	        	alert('Mat');
 	        }
 	     	else
 	        {
