@@ -67,7 +67,7 @@ function isInCheck()
 		}
 	}
 	if (tab.length < 1)
-		return (false);
+		return null;
 	else
 		return tab;
 }
