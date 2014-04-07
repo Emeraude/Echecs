@@ -2,6 +2,7 @@
 Here are the following functions used for cheking if there is a check of a checkmate
 
 initCheck() will create a new map in a check situation (developpers only)
+initCheck() will create a new map in a check mate situation (developpers only)
 getKing(color) will return the king informations of the specified color
 isInCheck() will an array which contain all the pieces that checked the king, or false if there is no
 canWeEatThatSucker(x, y) will return an array which contains coordonates of pieces which can eat the piece (located in (x,y)) threating the king
@@ -17,6 +18,17 @@ function initCheck()
 	pieces.push(new Cavalier(5, 2, blanc));
 	pieces.push(new Roi(5, 5, blanc));
 	pieces.push(new Pion(2, 5, blanc));
+
+	display(blanc);
+}
+
+function initCheckMate()
+{
+	pieces = [];
+
+	pieces.push(new Tour(1, 0, noir));
+	pieces.push(new Dame(2, 1, noir));
+	pieces.push(new Roi(7, 0, blanc));
 
 	display(blanc);
 }
