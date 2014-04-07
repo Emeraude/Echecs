@@ -103,31 +103,46 @@ function check_end_turn(pos_x, pos_y, elem)
 	var threats;
 	var toBlock;
 	var piecesQuiPeuventBoufferLaMenace;
+	var check_before = false;
+	var oldElem = getPiece(pos_x, pos_y);
 
     old_pos_x = elem.pos_x;
     old_pos_y = elem.pos_y;
-    elem.pos_x = pos_x;
-    elem.pos_y = pos_y;
-    if ((threats = isInCheck()) == false)
+    if (isInCheck() != false)
+    	check_before = true;
+    elem.move(pos_x, pos_y);
+    if (check_before == false)
     {
-        elem.pos_x = old_pos_x;
-        elem.pos_y = old_pos_y;
-        elem.move(pos_x, pos_y);
-        tour = (tour == blanc ? noir : blanc);
-        display(tour);
+	    if ((threats = isInCheck()) == false)
+	    {
+	        elem.pos_x = old_pos_x;
+	        elem.pos_y = old_pos_y;
+	        elem.move(pos_x, pos_y);
+			tour = (tour == blanc ? noir : blanc);
+	        display(tour);
+	    }
+	    else
+	    {
+	    	toBlock = my_no_check(threats);
+	    	if (threats.length == 1)
+	    		piecesQuiPeuventBoufferLaMenace = canWeEatThatSucker(threats[0][0], threats[0][1]);
+	    	if (typeof(piecesQuiPeuventBoufferLaMenace) && piecesQuiPeuventBoufferLaMenace.length == 0)
+	    		alert('Mat');
+	    }
+	}
+	else if (isInCheck() != false)
+	{
+        elem.move(old_pos_x, old_pos_y);
+        if (oldElem)
+        	pieces.push(oldElem);
+        alert("Player "+tour+" has to replay: isInCheck");
     }
     else
-    {
-    	toBlock = my_no_check(threats);
-    	if (threats.length == 1)
-    		piecesQuiPeuventBoufferLaMenace = canWeEatThatSucker(toBlock[0][0], toBlock[0][1]);
-    	if (typeof(piecesQuiPeuventBoufferLaMenace) && piecesQuiPeuventBoufferLaMenace.length == 0)
-    		alert('Mat');
-        elem.pos_x = old_pos_x;
-        elem.pos_y = old_pos_y;
-        alert("Player "+tour+" has to replay: isInCheck");
-        display(tour);
-    }
+    {        
+	    elem.move(pos_x, pos_y);
+		tour = (tour == blanc ? noir : blanc);
+    	display(tour);
+	}
 }
 
 tabulateHtml();
