@@ -148,11 +148,6 @@ function check_end_turn(pos_x, pos_y, elem)
 				display(tour);
 			}
 	    }
-	    else
-	    {
-			tour = (tour == blanc ? noir : blanc);
-			display(tour);
-		}
 	}
 	else if (isInCheck() != false)
 	{
