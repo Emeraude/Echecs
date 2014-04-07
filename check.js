@@ -139,7 +139,7 @@ function kingEscape()
 	{
 		king.pos_x = possibs[i][0];
 		king.pos_y = possibs[i][1];
-		if (isInCheck())
+		if (isInCheck() == false)
 		{
 			king.pos_x = x;
 			king.pos_y = y;
